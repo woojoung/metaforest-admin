@@ -16,9 +16,9 @@ metaforest-admin in React JS
 * $ nvm install [node version]
 * $ nvm use [node version]
 ## Clone repository
-* git clone git@github.com:woojoung/admin-metaforest.git
+* git clone git@github.com:woojoung/metaforest-admin.git
 ## Build and Run
-* $ cd ~/admin-metaforest
+* $ cd ~/metaforest-admin
 * $ npm install
 * $ cp ./src/Base/ConfigLocalhost.ts ./src/Base/Config.ts
 * $ cp ./public/tools/cfg.localhost.js ./public/tools/cfg.js
