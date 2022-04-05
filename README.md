@@ -16,7 +16,7 @@ admin-metaforest in React JS
 * $ nvm install [node version]
 * $ nvm use [node version]
 ## Clone repository
-* git clone 
+* git clone git@github.com:woojoung/admin-metaforest.git
 ## Build and Run
 * $ cd ~/admin-metaforest
 * $ npm install
