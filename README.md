@@ -1,6 +1,6 @@
 # README #
 
-admin-metaforest in React JS
+metaforest-admin in React JS
 
 ## Requirements
 * git
