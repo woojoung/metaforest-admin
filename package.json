@@ -17,8 +17,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./dist; mkdir ./dist"
   },
-
   "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.18.0",
