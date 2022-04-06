@@ -9,7 +9,7 @@ export const Footer: FC = (): JSX.Element => {
         <footer className='footer1'>
             &copy;{' '}
             <span className='copyright-year'>{copyrightYear}</span>{' '}
-            <span className='company-name'>Copyright YATAVENT Corp. All rights reserved.</span>
+            <span className='company-name'>YATAVENT Corp. All rights reserved.</span>
         </footer>
     )
 }
