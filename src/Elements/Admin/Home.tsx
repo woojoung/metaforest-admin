@@ -30,14 +30,16 @@ export const AdminHome: FC = (props): JSX.Element => {
     // effect
     useEffect(() => {
 
-        const apiRequest = new ApiRequest(eApiMessageType.SERVER_TEST_REQ)
+        // const apiRequest = new ApiRequest(eApiMessageType.SERVER_TEST_REQ)
 
-        xmlHttp.request(cfg.apiUrl, apiRequest, (): void => {
-            const apiResponse = xmlHttp.parseResponse()
-            if (apiResponse.status !== eHttpStatus.OK) { return }
+        // xmlHttp.request(cfg.apiUrl, apiRequest, (): void => {
+        //     const apiResponse = xmlHttp.parseResponse()
+        //     if (apiResponse.status !== eHttpStatus.OK) { return }
 
-            setIsLoaded(true)
-        })
+        //     setIsLoaded(true)
+        // })
+
+        setIsLoaded(true)
     }, [])
 
     // event
