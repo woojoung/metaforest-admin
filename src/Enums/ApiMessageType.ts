@@ -4,7 +4,6 @@ export enum eApiMessageType {
 
     // SERVER_TEST
     SERVER_TEST_REQ = 10001,
-    SERVER_TEST_ACK = 10002,
 
     // USER = 11
     USER_SIGNUP_REQ = 11001,
@@ -42,7 +41,7 @@ export enum eApiMessageType {
     ADMIN_LOGIN_REQ = 12001,
     ADMIN_LOGOUT_REQ = 12002,
     ADMIN_CHANGE_PASSWD_REQ = 12003,
-    
+
     ADMIN_CREATE_ADMIN_REQ = 12004,
     ADMIN_UPDATE_ADMIN_REQ = 12005,
     ADMIN_DELETE_ADMIN_REQ = 12006,
