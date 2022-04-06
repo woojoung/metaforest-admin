@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;  
+    text-decoration-line: none;
+}
+body {
+    margin: 0;
+}
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+a {
+    text-decoration-line: none;
+    color: initial;
+}
+a:hover {
+    text-decoration-line: none;
+}
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+.main1 {
+    margin: 10px;
+}
+/* navigation */
+.navBox {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    height: 48px;
+    width: 100%;
+}
+
+.navList {
+    float: left;
+}
+.navList a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+.navList a:hover, .dropdown1:hover .dropbtn {
+    background-color: darkgray;
+}
+  
+.navList.dropdown1 {
+    display: inline-block;
+}
+  
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 48px;
+}
+
+.dropdownContent a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+  
+.dropdownContent a:hover {background-color: #f1f1f1;}
+  
+.dropdown1:hover .dropdownContent {
+    display: block;
+}
+
+.navListIcon {
+    float: right;
+    display: none;
+}
+
+@media screen and (max-width: 780px) {
+    .navBox {
+        height: auto;
+    }
+    .navListIcon {
+        display: block;
+    }
+}
+/* footer */
+.footer1 {
+    margin: 50px 10px 20px 10px;
+}
+
+/* table */
+.tableBox {
+    width: 100%;
+    overflow-x: scroll;
+}
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 700px;
+  }
+  
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+table tr:nth-child(even){background-color: #f2f2f2;}
+  
+table tr:hover {background-color: #ddd;}
+  
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #333;
+    color: #ffffff;
+}
+
+/* form */
+.form1Search {
+    margin: 0 0 20px 0;
+    overflow: hidden;
+}
+.input1, .select1 {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.select2 {
+    width: 160px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.input2 {
+    width: 160px;
+    height: 26px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.input3, .form1Search .select3 {
+    width: 80px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.btnSubmit1 {
+    width: 160px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btnSubmit {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    color: #333;
+    cursor: pointer;
+}
+
+.form1 {
+    overflow: hidden;
+}
+.form1 .Form1Label1 {
+    margin: 0 10px 0 0;
+}
+.form1 .Form1Label1.style1 {
+    float: left;
+}
+.form1 .form1Input1 {
+    width: 350px;
+    height: 26px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form1 .form1Select1 {
+    width: 160px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form1 .textarea1 {
+    width: 98%;
+}
+.margin1 {
+    margin: 0 10px 0 0;
+}
+.link1 {
+    color: #0000EE;
+}
+@media screen and (max-width: 780px) {
+    .select2 {
+        width: 100%;
+        margin: 0 0 10px 0;
+    }
+    .input2 {
+        width: 98%;
+        margin: 0 0 10px 0;
+    }
+    .form1 .Form1Label1 {
+        margin: 0 0 10px 0;
+    }
+    .form1 .Form1Label1.style1 {
+        float: initial;
+    }
+    .form1 .form1Input1 {
+        width: 98%;
+    }
+    .form1 .form1Select1 {
+        width: 100%;
+    }
+    .select3 {
+        margin: 0 0 10px 0;
+    }
+}
+/* pagenation */
+.a1 {
+    /* color: #333; */
+    color: #0000EE;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* loading */
+.lodaingBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+.lodaingBox .loading1 {
+    width: 300px;
+    margin: 380px auto 0;
+}
+
+@-webkit-keyframes progressBarStripes {
+    from {
+      background-position: 1rem 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+  
+  @keyframes progressBarStripes {
+    from {
+      background-position: 1rem 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+  
+  .progress1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: 0.75rem;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+  }
+  
+  .progressBar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    background-color: #007bff;
+    transition: width 0.6s ease;
+  }
+  
+  .progressBarStriped {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+  }
+  
+  .progressBarAnimated {
+    -webkit-animation: progressBarStripes 1s linear infinite;
+    animation: progressBarStripes 1s linear infinite;
+  }
+
+  
