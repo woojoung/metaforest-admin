@@ -15,7 +15,11 @@
   "homepage": "https://github.com/woojoung/metaforest-admin#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf ./dist; mkdir ./dist"
+    "clean": "rm -rf ./dist; mkdir ./dist",
+    "prestart": "npm run clean",
+    "start": "npx webpack serve --mode development",
+    "prebuild": "npm run clean",
+    "build": "npx webpack --mode production"
   },
   "dependencies": {
     "react": "^18.0.0",
