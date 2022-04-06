@@ -1,4 +1,25 @@
 {
+  "name": "metaforest-admin",
+  "description": "metaforest-admin in React JS",
+  "version": "1.0.0",
+  "main": "App.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woojoung/metaforest-admin.git"
+  },
+  "author": "WoojoungChae <chae3229@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woojoung/metaforest-admin/issues"
+  },
+  "homepage": "https://github.com/woojoung/metaforest-admin#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf ./dist; mkdir ./dist"
+  },
+
+  "dependencies": {
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
