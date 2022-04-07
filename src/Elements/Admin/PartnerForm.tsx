@@ -14,6 +14,7 @@ import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
 import { nowStr } from '../../Base/Time'
 import { Partners } from '../../Models/Partners'
+import { ePlanType } from '../../Enums/PlanType'
 
 export const AdminPartnerForm: FC = (): JSX.Element => {
     // param
@@ -136,7 +137,13 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             <input className={styles.form1Input1} type='text' value={code} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setCode(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['plan'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={plan} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlan(evt.target.value)} /></p>
+                        <select value={plan} onChange={(evt: BaseSyntheticEvent): void => setPlan(evt.target.value)}>
+                                <option key={ePlanType.NONE} value={ePlanType.NONE}>{'플랜 해지'}({ePlanType.NONE})</option>
+                                <option key={ePlanType.BASIC} value={ePlanType.BASIC}>{'BASIC'}({ePlanType.BASIC})</option>
+                                <option key={ePlanType.PRO} value={ePlanType.PRO}>{'PRO'}({ePlanType.PRO})</option>
+                                <option key={ePlanType.FREE_TRIAL} value={ePlanType.FREE_TRIAL}>{'FREE_TRIAL'}({ePlanType.FREE_TRIAL})</option>
+                                <option key={ePlanType.PREMIUM} value={ePlanType.PREMIUM}>{'PREMIUM'}({ePlanType.PREMIUM})</option>
+                            </select></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['planStartTime'].name}</label>
                             <input className={styles.form1Input1} type='text' value={planStartTime} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanStartTime(evt.target.value)} /></p>
