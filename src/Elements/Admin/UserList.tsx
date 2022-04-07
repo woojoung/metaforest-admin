@@ -51,35 +51,34 @@ export const AdminUserList: FC = (): JSX.Element => {
         if (field1 && keyword1) {
             keywordType1 = columns[field1].type
             if (JSON.parse(like1)) {
-                conditions.push({ where: field1, like: '%' + keyword1 + '%' })
+                conditions.push({field1: keyword1})
             } else {
                 if (keywordType1 === 'number') {
-                    conditions.push({ where: field1, equalInt: Number(keyword1) })
+                    conditions.push({ field1: Number(keyword1)})
                 } else {
-                    conditions.push({ where: field1, equalStr: keyword1 })
+                    conditions.push({ field1: keyword1 })
                 }
             }
         }
         if (field2 && keyword2) {
             keywordType2 = columns[field2].type
             if (JSON.parse(like2)) {
-                conditions.push({ where: field2, like: '%' + keyword2 + '%' })
+                conditions.push({field2: keyword2})
             } else {
                 if (keywordType2 === 'number') {
-                    conditions.push({ where: field2, equalInt: Number(keyword2) })
+                    conditions.push({ field2: Number(keyword2)})
                 } else {
-                    conditions.push({ where: field2, equalStr: keyword2 })
+                    conditions.push({ field2: keyword2 })
                 }
             }
         }
 
         const apiRequest = new ApiRequest(eApiMessageType.USER_GET_LIST_REQ)
-        if (paramId !== '') {
-            conditions.push({ where: 'userId', equalInt: Number(paramId) })
-        }
+        
         apiRequest.data = {
             limit: _perPage + 1,
             offset: _pageNum,
+            conditions: conditions
         }
         xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
