@@ -1,6 +1,6 @@
 
 export enum ePlanType {
-    UNKNOWN = 0,
+    NONE = 0,
     BASIC = 10,
     PRO = 20,
     FREE_TRIAL = 30,
