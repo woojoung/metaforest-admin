@@ -37,8 +37,6 @@ export const AdminUserList: FC = (): JSX.Element => {
     const [field2, setField2] = useState(storage.getString([path1, path2, 'field2'].join('_')))
     const [like2, setLike2] = useState(storage.getString([path1, path2, 'like2'].join('_')) === '' ? 'true' : storage.getString([path1, path2, 'like2'].join('_')))
     const [keyword2, setKeyword2] = useState(storage.getString([path1, path2, 'keyword2'].join('_')))
-    const [orderBy, setOrderBy] = useState(storage.getString([path1, path2, 'orderBy'].join('_')))
-    const [isAsc, setIsAsc] = useState(storage.getBoolean([path1, path2, 'isAsc'].join('_')))
     const [rows, setRows] = useState([])
     const [nextPage, setNextPage] = useState(false)
 
@@ -107,8 +105,6 @@ export const AdminUserList: FC = (): JSX.Element => {
             storage.setString([path1, path2, 'field2'].join('_'), field2)
             storage.setString([path1, path2, 'like2'].join('_'), like2)
             storage.setString([path1, path2, 'keyword2'].join('_'), keyword2)
-            storage.setString([path1, path2, 'orderBy'].join('_'), orderBy)
-            storage.setBoolean([path1, path2, 'isAsc'].join('_'), isAsc)
 
             setIsLoaded(true)
         })
@@ -184,18 +180,6 @@ export const AdminUserList: FC = (): JSX.Element => {
                             <option value='true'>포함</option>
                         </select>
                         <input className={styles.input2 + ' ' + styles.margin1} type='text' size={15} value={keyword2} onChange={(evt: BaseSyntheticEvent): void => setKeyword2(evt.target.value)} />
-
-                        <select className={styles.select2 + ' ' + styles.margin1} value={orderBy} onChange={(evt: BaseSyntheticEvent): void => setOrderBy(evt.target.value)}>
-                            <option value=''>정렬</option>
-                            {fieldsKeys.map((key, index): JSX.Element => (
-                                <option key={key} value={key}>{fieldValues[index].name}</option>
-                            ))}
-                        </select>
-
-                        <select className={styles.select2 + ' ' + styles.margin1} value={isAsc.toString()} onChange={(evt: BaseSyntheticEvent): void => setIsAsc(JSON.parse(evt.target.value))}>
-                            <option value='false'>내림차순</option>
-                            <option value='true'>오름차순</option>
-                        </select>
 
                         <input className={styles.btnSubmit1} type='submit' value='확인' />
                     </form >
