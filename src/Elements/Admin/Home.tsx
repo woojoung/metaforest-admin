@@ -12,6 +12,7 @@ import { Loading } from '../Common/Loading'
 import { cfg } from '../../Base/Config'
 import { eEnvironment } from '../../Enums/Environment'
 import styles from '../../Styles/Style.module.css'
+import { adminCheckAuth } from './Auth'
 
 export const AdminHome: FC = (props): JSX.Element => {
 
@@ -29,7 +30,8 @@ export const AdminHome: FC = (props): JSX.Element => {
 
     // effect
     useEffect(() => {
-
+        
+        if (adminCheckAuth() === false) { return }
         // const apiRequest = new ApiRequest(eApiMessageType.SERVER_TEST_REQ)
 
         // xmlHttp.request(cfg.apiUrl, apiRequest, (): void => {

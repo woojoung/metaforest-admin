@@ -32,12 +32,12 @@ export const AdminLogin: FC = (props): JSX.Element => {
             password: hexMd5,
         }
         console.log(apiRequest)
-        xmlHttp.request(cfg.apiUrl, apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'auth/login', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse(false)
             console.log(apiResponse)
             if (apiResponse.status !== eHttpStatus.OK) { alert(apiResponse.status + ' ' + apiResponse.message); return }
 
-            storage.setString('adminId', apiResponse.data.adminId)
+            storage.setString('adminId', apiResponse.data.userId)
             storage.setInteger('adminAccessLevel', parseInt(apiResponse.data.accessLevel))
             navigate('/admin/home')
         })

@@ -17,24 +17,22 @@ export const AdminLogout: FC = (props): JSX.Element => {
 
     // effect
     useEffect(() => {
-        // const apiRequest = new ApiRequest(eApiMessageType.ADMIN_LOGOUT_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.USER_LOGOUT_REQ)
 
-        // xmlHttp.request(cfg.apiUrl, apiRequest, (): void => {
-        //     const apiResponse = xmlHttp.parseResponse()
-        //     if (apiResponse.status !== eHttpStatus.OK) { return }
+        xmlHttp.request(cfg.apiUrl+'auth/logout', apiRequest, (): void => {
+            const apiResponse = xmlHttp.parseResponse()
+            if (apiResponse.status !== eHttpStatus.OK) { return }
 
-        //     /*
-        //     if (responseBody.errCode !== eErrorCode.NONE) {
-        //         alert('로그아웃 실패')
-        //         return
-        //     }
-        //     */
+            /*
+            if (responseBody.errCode !== eErrorCode.NONE) {
+                alert('로그아웃 실패')
+                return
+            }
+            */
 
-        //     storage.clear()
-        //     navigate('/admin/login')
-        // })
-        storage.clear()
-        navigate('/admin/login')
+            storage.clear()
+            navigate('/admin/login')
+        })
     }, [])
 
     // render

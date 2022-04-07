@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AdminHome from './Elements/Admin/Home'
 import AdminLogin from './Elements/Admin/Login'
 import AdminLogout from './Elements/Admin/Logout'
+import AdminUserForm from './Elements/Admin/UserForm'
+import AdminUserList from './Elements/Admin/UserList'
 import './Styles/Style.css'
 //admin component
 
@@ -18,6 +20,9 @@ ReactDOM.render(
                 <Route path='/admin/logout' element={<AdminLogout />} />
                 {/* <Route path='/admin/form/:id?' element={<AdminAdminForm />} />
                 <Route path='/admin/list' element={<AdminAdminList />} /> */}
+
+                <Route path='/admin/user/form/:id?' element={<AdminUserForm />} />
+                <Route path='/admin/user/list' element={<AdminUserList />} />
 
                 
 
