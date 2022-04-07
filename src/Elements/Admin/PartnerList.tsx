@@ -24,9 +24,9 @@ export const AdminPartnerList: FC = (): JSX.Element => {
     const [adminAccessLevel] = useState(storage.getInteger('adminAccessLevel', 0))
 
     const [isLoaded, setIsLoaded] = useState(false)
-    const [h1] = useState('사용자 목록')
+    const [h1] = useState('기관 목록')
     const [path1] = useState('admin')
-    const [path2] = useState('user')
+    const [path2] = useState('partner')
     const [id] = useState(paramId)
 
     const [perPage] = useState(storage.getInteger([path1, path2, 'perPage'].join('_'), 25))
@@ -71,14 +71,14 @@ export const AdminPartnerList: FC = (): JSX.Element => {
             }
         }
 
-        const apiRequest = new ApiRequest(eApiMessageType.USER_GET_LIST_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.USER_GET_LIST_PARTNER_REQ)
         
         apiRequest.data = {
             limit: _perPage + 1,
             offset: _pageNum,
             conditions: conditions
         }
-        xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'partner/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
             if (apiResponse.status !== 200) { 

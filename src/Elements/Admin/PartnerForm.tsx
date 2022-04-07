@@ -27,9 +27,9 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
     const [adminAccessLevel] = useState(storage.getInteger('adminAccessLevel', 0))
 
     const [isLoaded, setIsLoaded] = useState(false)
-    const [h1] = useState('User Form')
+    const [h1] = useState('Partner Form')
     const [path1] = useState('admin')
-    const [path2] = useState('user')
+    const [path2] = useState('partner')
     const [id, setId] = useState(Number(paramId))
     const [inputColor, setInputColor] = useState({ backgroundColor: 'white' })
 
@@ -52,7 +52,7 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
         apiRequest.data = {
             partnerId: id,
         }
-        xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'partner/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             if (apiResponse.status !== eHttpStatus.OK) { return }
 

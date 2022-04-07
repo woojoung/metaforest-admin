@@ -11,7 +11,7 @@ export class ConfigLocalhost extends ConfigBase {
 
         this.locale = 'ko-KR'
 
-        this.apiUrl = 'http://127.0.0.1:7071'
+        this.apiUrl = 'http://127.0.0.1:7071/'
     }
 }
 
