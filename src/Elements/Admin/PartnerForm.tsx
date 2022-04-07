@@ -77,7 +77,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
        // event
        const onSubmitForm = (evt: BaseSyntheticEvent): void => {
         evt.preventDefault()
-        const apiRequest = new ApiRequest(eApiMessageType.USER_UPDATE_REQ)
+        const apiRequest = new ApiRequest()
+        apiRequest.msgType = (paramId === '') ? eApiMessageType.USER_CREATE_PARTNER_REQ : eApiMessageType.USER_UPDATE_PARTNER_REQ
         apiRequest.data = {
             partnerId: id,
             partnerNickname: partnerNickname,
