@@ -1,6 +1,6 @@
 
 import React, { FC, BaseSyntheticEvent, Fragment, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { eHttpStatus } from '../../Enums/HttpStatus'
 import { eApiMessageType } from '../../Enums/ApiMessageType'
 import { ApiRequest } from '../../Libs/ApiRequest'
