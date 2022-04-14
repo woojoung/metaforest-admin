@@ -33,7 +33,7 @@ metaforest-admin in React JS
 * $ which aws
 * $ aws --version
 ### set and view configuration settings
-* $ aws configure
+* $ aws configure --profile mfdeployer
 * AWS Access Key ID [None]: 
 * AWS Secret Access Key [None]: 
 * Default region name [None]: 
