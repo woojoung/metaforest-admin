@@ -22,7 +22,6 @@ cp -f ./src/Base/ConfigProduction.ts ./src/Base/Config.ts
 npm run build
 
 cp -rf ./public/css ./dist
-cp -rf ./public/*.txt ./dist
 cp -rf ./public/test.html ./dist
 
 mv -f ./dist/tools/cfg.production.js ./dist/tools/cfg.js
