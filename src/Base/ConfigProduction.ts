@@ -10,7 +10,7 @@ export class ConfigProduction extends ConfigBase {
 
         this.locale = 'ko-KR'
 
-        this.apiUrl = 'https://'
+        this.apiUrl = 'http://ec2-13-209-96-172.ap-northeast-2.compute.amazonaws.com:7071/'
     }
 }
 
