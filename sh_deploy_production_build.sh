@@ -31,7 +31,7 @@ cp -rf ./dist ../admin_mf_production_$DATE
 
 cp -f ./src/Base/ConfigLocalhost.ts ./src/Base/Config.ts
 
-aws s3 sync ../admin_mf_production_$DATE s3://adminmetaforest --delete
+aws s3 sync ../admin_mf_production_$DATE s3://adminmetaforest --delete --profile mfdeployer
 
 git tag admin_mf_production_$DATE\_$NAME
 git push origin admin_mf_production_$DATE\_$NAME
