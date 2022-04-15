@@ -46,8 +46,8 @@ export const AdminNavigation: FC<Indexable> = (props: Indexable): JSX.Element =>
                     <Link to='#'>{storage.getString('userId')}</Link>
                     <Link to='/admin/passwd'>비밀번호 변경</Link>
                     <Link to='/admin/logout'>로그아웃</Link>
-                    <Link to='/admin/list'>관리자 목록</Link>
-                    <Link to='/admin/form'>관리자 추가</Link>
+                    <Link to='/admin/admin/list'>관리자 목록</Link>
+                    <Link to='/admin/admin/form'>관리자 추가</Link>
                 </div>
             </li>
             {/* <a className='styles.nav-icon' onClick={onClickIcon}>&#9776;</a> */}

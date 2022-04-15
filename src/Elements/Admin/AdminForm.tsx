@@ -13,12 +13,11 @@ import { Users } from '../../Models/Users'
 import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
-import { nowStr } from '../../Base/Time'
+import { nowStr, toLocalTimeStr } from '../../Base/Time'
 
 export const AdminAdminForm: FC = (): JSX.Element => {
     // param
     const params = useParams()
-    console.log(params)
     const paramId = params.id ? params.id : ''
 
     // state
@@ -55,13 +54,13 @@ export const AdminAdminForm: FC = (): JSX.Element => {
             console.log(apiResponse)
             if (apiResponse.status !== eHttpStatus.OK) { return }
 
-            const row = apiResponse.data.rows[0]
-            console.log(apiResponse)
+            const row = apiResponse.data.rows
+            console.log(row)
             setId(row.userId)
             setEmail(row.email)
             setAccessLevel(row.accessLevel)
-            setCreatedAt(row.createdAt)
-            setUpdatedAt(row.updatedAt)
+            setCreatedAt(toLocalTimeStr(row.createdAt))
+            setUpdatedAt(toLocalTimeStr(row.updatedAt))
 
             setIsLoaded(true)
         })
@@ -88,7 +87,7 @@ export const AdminAdminForm: FC = (): JSX.Element => {
             alert(message)
 
             if (confirm(message)) {
-                navigate(`/${path1}/list`)
+                navigate(`/${path1}/${path2}list`)
             }           
         })
     }

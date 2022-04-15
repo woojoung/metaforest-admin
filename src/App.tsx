@@ -22,13 +22,13 @@ ReactDOM.render(
                 <Route path='/admin/home' element={<AdminHome />} />
                 <Route path='/admin/login' element={<AdminLogin />} />
                 <Route path='/admin/logout' element={<AdminLogout />} />
-                <Route path='/admin/form/:id?' element={<AdminAdminForm />} />
-                <Route path='/admin/list' element={<AdminAdminList />} />
+                <Route path='/admin/admin/form/:id' element={<AdminAdminForm />} />
+                <Route path='/admin/admin/list' element={<AdminAdminList />} />
                 
-                <Route path='/admin/user/form/:id?' element={<AdminUserForm />} />
+                <Route path='/admin/user/form/:id' element={<AdminUserForm />} />
                 <Route path='/admin/user/list' element={<AdminUserList />} />
                 
-                <Route path={'/admin/partner/form/:id?'} element={<AdminPartnerForm />} />
+                <Route path='/admin/partner/form/:id' element={<AdminPartnerForm />} />
                 <Route path='/admin/partner/list' element={<AdminPartnerList />} />
 
 
