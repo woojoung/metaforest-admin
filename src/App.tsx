@@ -2,6 +2,8 @@
 import React, { FC } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import AdminAdminForm from './Elements/Admin/AdminForm'
+import AdminAdminList from './Elements/Admin/AdminList'
 import AdminHome from './Elements/Admin/Home'
 import AdminLogin from './Elements/Admin/Login'
 import AdminLogout from './Elements/Admin/Logout'
@@ -26,6 +28,9 @@ ReactDOM.render(
                 
                 <Route path='/admin/partner/form/:id?' element={<AdminPartnerForm />} />
                 <Route path='/admin/partner/list' element={<AdminPartnerList />} />
+
+                <Route path='/admin/admin/form/:id?' element={<AdminAdminForm />} />
+                <Route path='/admin/admin/list' element={<AdminAdminList />} />
                 
 
                 {/* <Route path='/' element={<Main />} />

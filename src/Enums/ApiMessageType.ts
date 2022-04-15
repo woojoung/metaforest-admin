@@ -18,6 +18,7 @@ export enum eApiMessageType {
     USER_SIGNUP_AUTHCODE_REQ = 11010,
     USER_FIND_ACCOUNT_ID_REQ = 11011,
     USER_FIND_PASSWD_REQ = 11012,
+    USER_CREATE_REQ = 11013,
 
     
     // NOTICE = 12
