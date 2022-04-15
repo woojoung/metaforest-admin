@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AdminAdminForm from './Elements/Admin/AdminForm'
 import AdminAdminList from './Elements/Admin/AdminList'
+import AdminPasswd from './Elements/Admin/AdminPasswd'
 import AdminHome from './Elements/Admin/Home'
 import AdminLogin from './Elements/Admin/Login'
 import AdminLogout from './Elements/Admin/Logout'
@@ -22,6 +23,8 @@ ReactDOM.render(
                 <Route path='/admin/home' element={<AdminHome />} />
                 <Route path='/admin/login' element={<AdminLogin />} />
                 <Route path='/admin/logout' element={<AdminLogout />} />
+                <Route path='/admin/passwd' element={<AdminPasswd />} />
+                
                 <Route path='/admin/admin/form/:id' element={<AdminAdminForm />} />
                 <Route path='/admin/admin/form' element={<AdminAdminForm />} />
                 <Route path='/admin/admin/list' element={<AdminAdminList />} />
