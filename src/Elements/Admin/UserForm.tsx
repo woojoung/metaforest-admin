@@ -13,7 +13,7 @@ import { Users } from '../../Models/Users'
 import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
-import { nowStr } from '../../Base/Time'
+import { nowStr, toLocalTimeStr } from '../../Base/Time'
 
 export const AdminUserForm: FC = (): JSX.Element => {
     // param
@@ -61,7 +61,7 @@ export const AdminUserForm: FC = (): JSX.Element => {
             const apiResponse = xmlHttp.parseResponse()
             if (apiResponse.status !== eHttpStatus.OK) { return }
 
-            const row = apiResponse.data.rows[0]
+            const row = apiResponse.data.rows
             console.log(apiResponse)
             setId(row.userId)
 
@@ -75,8 +75,8 @@ export const AdminUserForm: FC = (): JSX.Element => {
             setMarketingAgreeTime(row.marketingAgreeTime)
             setPartnerId(row.partnerId)
             setAccessLevel(row.accessLevel)
-            setCreatedAt(row.createdAt)
-            setUpdatedAt(row.updatedAt)
+            setCreatedAt(toLocalTimeStr(row.createdAt))
+            setUpdatedAt(toLocalTimeStr(row.updatedAt))
 
 
             setIsLoaded(true)
