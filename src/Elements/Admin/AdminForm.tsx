@@ -31,7 +31,15 @@ export const AdminAdminForm: FC = (): JSX.Element => {
     const [id, setId] = useState(Number(paramId))
     const [inputColor, setInputColor] = useState({ backgroundColor: 'white' })
 
+    const [userNickname, setUserNickname] = useState('')
+    const [profileImageUrl, setProfileImageUrl] = useState('')
+    const [accountId, setAccountId] = useState('')
     const [email, setEmail] = useState('')
+    const [gender, setGender] = useState('')
+    const [birth, setBirth] = useState('')
+    const [md5Mobile, setMd5Mobile] = useState('')
+    const [marketingAgreeTime, setMarketingAgreeTime] = useState(0)
+    const [partnerId, setPartnerId] = useState(0)
     const [accessLevel, setAccessLevel] = useState(0)
 
     const [createdAt, setCreatedAt] = useState('')
@@ -57,7 +65,16 @@ export const AdminAdminForm: FC = (): JSX.Element => {
             const row = apiResponse.data.rows
             console.log(row)
             setId(row.userId)
+
+            setUserNickname(row.userNickname)
+            setProfileImageUrl(row.profileImageUrl)
+            setAccountId(row.accountId)
             setEmail(row.email)
+            setGender(row.gender)
+            setBirth(row.birth)
+            setMd5Mobile(row.md5Mobile)
+            setMarketingAgreeTime(row.marketingAgreeTime)
+            setPartnerId(row.partnerId)
             setAccessLevel(row.accessLevel)
             setCreatedAt(toLocalTimeStr(row.createdAt))
             setUpdatedAt(toLocalTimeStr(row.updatedAt))
@@ -78,7 +95,15 @@ export const AdminAdminForm: FC = (): JSX.Element => {
             createdAt: nowStr(),
         } : {
             userId: id,
+            userNickname: userNickname,
+            profileImageUrl: profileImageUrl,
+            accountId: accountId,
             email: email,
+            gender: gender,
+            birth: birth,
+            md5Mobile: md5Mobile,
+            marketingAgreeTime: marketingAgreeTime,
+            partnerId: partnerId,
             accessLevel: accessLevel,
             updatedAt: nowStr(),
         }
