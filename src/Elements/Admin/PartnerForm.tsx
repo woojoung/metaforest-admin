@@ -12,7 +12,7 @@ import { Loading } from '../Common/Loading'
 import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
-import { nowStr } from '../../Base/Time'
+import { nowStr, toLocalTimeStr } from '../../Base/Time'
 import { Partners } from '../../Models/Partners'
 import { ePlanType } from '../../Enums/PlanType'
 
@@ -55,20 +55,21 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
         }
         xmlHttp.request(cfg.apiUrl+'partner/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
+            console.log(apiResponse)
             if (apiResponse.status !== eHttpStatus.OK) { return }
 
-            const row = apiResponse.data.rows[0]
-            console.log(apiResponse)
+            const row = apiResponse.data.rows
+            console.log(row)
             setId(row.partnerId)
 
             setPartnerNickname(row.userNickname)
             setCode(row.code)
             setPlan(row.plan)
-            setPlanStartTime(row.planStartTime)
-            setPlanExpiryTime(row.planExpiryTime)
+            setPlanStartTime(toLocalTimeStr(row.planStartTime))
+            setPlanExpiryTime(toLocalTimeStr(row.planExpiryTime))
             setIsApproved(row.isApproved)
-            setCreatedAt(row.createdAt)
-            setUpdatedAt(row.updatedAt)
+            setCreatedAt(toLocalTimeStr(row.createdAt))
+            setUpdatedAt(toLocalTimeStr(row.updatedAt))
 
 
             setIsLoaded(true)
@@ -131,10 +132,10 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             <input className={styles.form1Input1} type='text' value={id} readOnly={true} style={{ backgroundColor: 'lightgray' }} onChange={(evt: BaseSyntheticEvent): void => setId(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['partnerNickname'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={partnerNickname} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPartnerNickname(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={partnerNickname} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPartnerNickname(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['code'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={code} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setCode(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={code} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setCode(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['plan'].name}</label>
                         <select value={plan} onChange={(evt: BaseSyntheticEvent): void => setPlan(evt.target.value)}>
@@ -152,7 +153,7 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             <input className={styles.form1Input1} type='text' value={planExpiryTime} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanExpiryTime(evt.target.value)} /></p>
                         
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['isApproved'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={isApproved} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setIsApproved(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={isApproved} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setIsApproved(evt.target.value)} /></p>
                         
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['createdAt'].name}</label>
                             <input className={styles.form1Input1} type='text' value={createdAt} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setCreatedAt(evt.target.value)} /></p>
