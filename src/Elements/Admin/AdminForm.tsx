@@ -71,7 +71,12 @@ export const AdminAdminForm: FC = (): JSX.Element => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.USER_CREATE_REQ : eApiMessageType.USER_UPDATE_REQ
-        apiRequest.data = {
+        apiRequest.data = (paramId === '') ? {
+            userId: id,
+            email: email,
+            accessLevel: accessLevel,
+            createdAt: nowStr(),
+        } : {
             userId: id,
             email: email,
             accessLevel: accessLevel,
