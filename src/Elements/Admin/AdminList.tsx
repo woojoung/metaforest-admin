@@ -108,9 +108,6 @@ export const AdminAdminList: FC = (): JSX.Element => {
     const users = new Users()
     const columns = users.columns
 
-    const fieldsKeys = Object.keys(users.columns)
-    const fieldValues = Object.values(users.columns)
-
     return (
         <Fragment>
             <AdminNavigation admin={{ 'id': adminId, 'accessLevel': adminAccessLevel }} />
