@@ -5,10 +5,14 @@ import { eApiMessageType } from '../Enums/ApiMessageType'
 export class ApiRequest {
     msgType: eApiMessageType
     data: Any
+    email: string
+    password: string
 
-    constructor( msgType = 0, data: Any = null) {
+    constructor( msgType = 0, data: Any = null, email: string = '', password: string = '') {
         this.msgType = msgType
         this.data = data
+        this.email = email
+        this.password = password
     }
 
     getBoolean(name: string, defaultValue = false): boolean {

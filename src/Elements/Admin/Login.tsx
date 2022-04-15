@@ -26,10 +26,8 @@ export const AdminLogin: FC = (props): JSX.Element => {
         evt.preventDefault()
         const hexMd5 = hex_md5(adminEmail + hex_md5(passwd))
 
-        const apiRequest = new ApiRequest(eApiMessageType.USER_LOGIN_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.USER_LOGIN_REQ, {}, adminEmail, hexMd5)
         apiRequest.data = {
-            email: adminEmail,
-            password: hexMd5,
         }
         console.log(apiRequest)
         xmlHttp.request(cfg.apiUrl+'auth/login', apiRequest, (): void => {

@@ -116,12 +116,6 @@ export const AdminAdminList: FC = (): JSX.Element => {
             <AdminNavigation admin={{ 'id': adminId, 'accessLevel': adminAccessLevel }} />
             <main className={styles.main1}>
                 <h1>{h1}</h1>
-                {paramId === '' &&
-                    <form className={styles.form1Search} onSubmit={onSubmitForm}>
-                        <input className={styles.btnSubmit1} type='submit' value='확인' />
-                    </form >
-                }
-
 
                 <div className={styles.tableBox}>
                     <table className={styles.table1}>
