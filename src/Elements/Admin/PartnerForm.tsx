@@ -28,7 +28,7 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
     const [adminAccessLevel] = useState(storage.getInteger('adminAccessLevel', 0))
 
     const [isLoaded, setIsLoaded] = useState(false)
-    const [h1] = useState('Partner Form')
+    const [h1] = useState('기관')
     const [path1] = useState('admin')
     const [path2] = useState('partner')
     const [id, setId] = useState(Number(paramId))
@@ -147,10 +147,10 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             </select></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['planStartTime'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={planStartTime} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanStartTime(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={planStartTime} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanStartTime(evt.target.value)} /></p>
                         
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['planExpiryTime'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={planExpiryTime} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanExpiryTime(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={planExpiryTime} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanExpiryTime(evt.target.value)} /></p>
                         
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['isApproved'].name}</label>
                             <input className={styles.form1Input1} type='text' value={isApproved} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setIsApproved(evt.target.value)} /></p>
