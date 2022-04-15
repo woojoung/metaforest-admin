@@ -18,8 +18,7 @@ import { nowStr } from '../../Base/Time'
 export const AdminAdminForm: FC = (): JSX.Element => {
     // param
     const params = useParams()
-    const navigate = useNavigate()
-
+    console.log(params)
     const paramId = params.id ? params.id : ''
 
     // state
@@ -39,6 +38,8 @@ export const AdminAdminForm: FC = (): JSX.Element => {
     const [createdAt, setCreatedAt] = useState('')
     const [updatedAt, setUpdatedAt] = useState('')
 
+    const navigate = useNavigate()
+
     // api
     const apiGetOne = (): void => {
         if (paramId === '') { setIsLoaded(true); return }
@@ -51,6 +52,7 @@ export const AdminAdminForm: FC = (): JSX.Element => {
         }
         xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
+            console.log(apiResponse)
             if (apiResponse.status !== eHttpStatus.OK) { return }
 
             const row = apiResponse.data.rows[0]
@@ -86,7 +88,7 @@ export const AdminAdminForm: FC = (): JSX.Element => {
             alert(message)
 
             if (confirm(message)) {
-                navigate(`/${path1}/${path2}/list`)
+                navigate(`/${path1}/list`)
             }           
         })
     }

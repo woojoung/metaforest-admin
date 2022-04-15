@@ -133,7 +133,7 @@ export const AdminAdminList: FC = (): JSX.Element => {
                             {rows.map((row: User): JSX.Element => (
                                 <tr key={row.userId}>
                                     <td>{row.userId}</td>
-                                    <td><Link className={'link1'} to={`/${path1}/${path2}/form/${row.userId}`}>보기/수정</Link></td>
+                                    <td><Link className={'link1'} to={`/${path1}/form/${row.userId}`}>보기/수정</Link></td>
                                     <td>{row.email}</td>
                                     <td>{row.accessLevel}</td>
                                     <td>{toLocalTimeStr(row.createdAt)}</td>
