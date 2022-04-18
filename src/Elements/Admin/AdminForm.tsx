@@ -117,7 +117,7 @@ export const AdminAdminForm: FC = (): JSX.Element => {
             alert(message)
 
             if (confirm(message)) {
-                navigate(`/${path1}/${path2}list`)
+                navigate(`/${path1}/${path2}/list`)
             }           
         })
     }
