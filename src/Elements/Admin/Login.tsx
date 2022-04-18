@@ -29,7 +29,7 @@ export const AdminLogin: FC = (props): JSX.Element => {
         const apiRequest = new ApiRequest(eApiMessageType.USER_LOGIN_REQ, {}, adminEmail, hexMd5)
         apiRequest.data = {
         }
-        console.log(apiRequest)
+        // console.log(apiRequest)
         xmlHttp.request(cfg.apiUrl+'auth/login', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse(false)
             console.log(apiResponse)
