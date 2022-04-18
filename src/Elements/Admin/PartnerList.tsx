@@ -196,7 +196,6 @@ export const AdminPartnerList: FC = (): JSX.Element => {
                                 <th>{columns['partnerId'].name}</th>
                                 <th>보기/수정</th>
                                 <th>{columns['partnerNickname'].name}</th>
-                                <th>{columns['code'].name}</th>
                                 <th>{columns['plan'].name}</th>
                                 <th>{columns['planStartTime'].name}</th>
                                 <th>{columns['planExpiryTime'].name}</th>
@@ -211,7 +210,6 @@ export const AdminPartnerList: FC = (): JSX.Element => {
                                     <td>{row.partnerId}</td>
                                     <td><Link className={'link1'} to={`/${path1}/${path2}/form/${row.partnerId}`}>보기/수정</Link></td>
                                     <td>{row.partnerNickname}</td>
-                                    <td>{row.code}</td>
                                     <td>{row.plan}</td>
                                     <td>{row.planStartTime}</td>
                                     <td>{row.planExpiryTime}</td>
