@@ -10,7 +10,7 @@ export class ConfigProduction extends ConfigBase {
 
         this.locale = 'ko-KR'
 
-        this.apiUrl = 'https://ec2-api.metaforest.us:7071/'
+        this.apiUrl = 'https://api.metaforest.us/'
     }
 }
 
