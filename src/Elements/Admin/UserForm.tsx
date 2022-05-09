@@ -27,7 +27,7 @@ export const AdminUserForm: FC = (): JSX.Element => {
     const [adminAccessLevel] = useState(storage.getInteger('adminAccessLevel', 0))
 
     const [isLoaded, setIsLoaded] = useState(false)
-    const [h1] = useState('User Form')
+    const [h1] = useState('사용자')
     const [path1] = useState('admin')
     const [path2] = useState('user')
     const [id, setId] = useState(Number(paramId))
