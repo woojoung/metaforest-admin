@@ -14,6 +14,7 @@ import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
 import { nowStr, toLocalTimeStr } from '../../Base/Time'
+import { hex_md5 } from '../../Libs/MD5'
 
 export const AdminAdminForm: FC = (): JSX.Element => {
     // param
@@ -35,6 +36,7 @@ export const AdminAdminForm: FC = (): JSX.Element => {
     const [profileImageUrl, setProfileImageUrl] = useState('')
     const [accountId, setAccountId] = useState('')
     const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [gender, setGender] = useState('')
     const [birth, setBirth] = useState('')
     const [md5Mobile, setMd5Mobile] = useState('')
@@ -88,9 +90,11 @@ export const AdminAdminForm: FC = (): JSX.Element => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.USER_CREATE_REQ : eApiMessageType.USER_UPDATE_REQ
+        const hexMd5 = hex_md5(email + hex_md5(password))
         apiRequest.data = (paramId === '') ? {
             userId: id,
             email: email,
+            password: hexMd5,
             accessLevel: accessLevel,
             createdAt: nowStr(),
         } : {
@@ -149,6 +153,9 @@ export const AdminAdminForm: FC = (): JSX.Element => {
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['email'].name}</label>
                             <input className={styles.form1Input1} type='text' value={email} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setEmail(evt.target.value)} /></p>
+
+                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['password'].name}</label>
+                            <input className={styles.form1Input1} type='text' value={password} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPassword(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['accessLevel'].name}</label>
                             <input className={styles.form1Input1} type='text' value={accessLevel} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setAccessLevel(evt.target.value)} /></p>
