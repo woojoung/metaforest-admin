@@ -13,6 +13,7 @@ import { Loading } from '../Common/Loading'
 import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
+import { nowStr } from '../../Base/Time'
 
 export const AdminPasswd: FC = (props): JSX.Element => {
 
@@ -51,6 +52,7 @@ export const AdminPasswd: FC = (props): JSX.Element => {
         apiRequest.data = {
             userId: adminId,
             password: hexMd5,
+            updatedAt: nowStr(),
         }
 
         xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
