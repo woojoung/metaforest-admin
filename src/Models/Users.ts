@@ -28,11 +28,11 @@ export class Users extends Model {
             password: { type: 'string', name: '비밀번호' },
             email: { type: 'string', name: '이메일' },
             gender: { type: 'string', name: '성별' },
-            birth: { type: 'string', name: '생년' },
+            birth: { type: 'string', name: '생년월일' },
             md5Mobile: { type: 'string', name: 'MD5모바일' },
             marketingAgreeTime: { type: 'number', name: '약관동의' },
             partnerId: { type: 'number', name: '기관 아이디' },
-            accessLevel: { type: 'number', name: '레벨' },
+            accessLevel: { type: 'number', name: '권한 레벨' },
             createdAt: { type: 'string', name: '입력일자' },
             updatedAt: { type: 'string', name: '수정일자' },
         })
