@@ -36,4 +36,4 @@ metaforest-admin in React JS
 * $ aws configure --profile mfdeployer
 * AWS Access Key ID [None]: 
 * AWS Secret Access Key [None]: 
-* Default region name [None]: 
+* Default region name [None]: ap-northeast-2
