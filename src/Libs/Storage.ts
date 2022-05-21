@@ -73,6 +73,7 @@ class Storage {
 
     clear(): void {
         localStorage.clear()
+        sessionStorage.clear()
     }
 }
 
