@@ -123,7 +123,7 @@ export const AdminAdminList: FC = (): JSX.Element => {
                                 {/* {fieldsKeys.map((key, index): JSX.Element => (
                                     <td key={key}>{fieldValues[index].name}</td>
                                 ))} */}
-                                <th>{columns['userId'].name}</th>
+                                <th>{'관리자 No'}</th>
                                 <th>보기/수정</th>
                                 <th>{columns['userNickname'].name}</th>
                                 <th>{'관리자ID'}</th>

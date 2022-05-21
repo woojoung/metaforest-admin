@@ -150,8 +150,11 @@ export const AdminAdminForm: FC = (): JSX.Element => {
                 <div>
                     <form className={styles.form1} onSubmit={onSubmitForm}>
 
-                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['userId'].name}</label>
+                        <p className={styles.p1}><label className={styles.Form1Label1}>{'관리자 No'}</label>
                             <input className={styles.form1Input1} type='text' value={id} readOnly={true} style={{ backgroundColor: 'lightgray' }} onChange={(evt: BaseSyntheticEvent): void => setId(evt.target.value)} /></p>
+
+                        <p className={styles.p1}><label className={styles.Form1Label1}>{'관리자 이름'}</label>
+                            <input className={styles.form1Input1} type='text' value={userNickname} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setUserNickname(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{'관리자ID'}</label>
                             <input className={styles.form1Input1} type='text' value={email} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setEmail(evt.target.value)} /></p>
