@@ -123,7 +123,7 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
         if (adminCheckAuth() === false) { return }
 
         apiGetOne()
-    }, [])
+    }, [paramId])
 
     // render
     if (isLoaded === false) { return <Loading /> }
