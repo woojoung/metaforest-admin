@@ -46,15 +46,15 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
     // api
     const apiGetOne = (): void => {
         if (paramId === '') { 
-            // setId(Number(paramId))
-            // setPartnerNickname('')
-            // setCode('')
-            // setPlan(0)
-            // setPlanStartTime('')
-            // setPlanExpiryTime('')
-            // setIsApproved('N')
-            // setCreatedAt('')
-            // setUpdatedAt('')
+            setId(Number(paramId))
+            setPartnerNickname('')
+            setCode('')
+            setPlan(0)
+            setPlanStartTime('')
+            setPlanExpiryTime('')
+            setIsApproved('N')
+            setCreatedAt('')
+            setUpdatedAt('')
             setIsLoaded(true)
             return 
         }

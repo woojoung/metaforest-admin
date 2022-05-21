@@ -13,7 +13,7 @@ import { toLocalTimeStr } from '../../Base/Time'
 import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
-import { Partner, Partners } from '../../Models/Partners'
+import { PartnerExtended, Partner, Partners } from '../../Models/Partners'
 import { ePlanType } from '../../Enums/PlanType'
 import { text } from '../../Libs/Localization'
 import { eHttpStatus } from '../../Enums/HttpStatus'
@@ -233,11 +233,12 @@ export const AdminPartnerList: FC = (): JSX.Element => {
                                 <th>{columns['planExpiryTime'].name}</th>
                                 <th>{columns['createdAt'].name}</th>
                                 <th>{columns['updatedAt'].name}</th>
+                                <th>{'가입계정수'}</th>
                                 <th>삭제</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {rows.map((row: Partner): JSX.Element => (
+                            {rows.map((row: PartnerExtended): JSX.Element => (
                                 <tr key={row.partnerId}>
                                     <td>{row.partnerId}</td>
                                     <td><Link className={'link1'} to={`/${path1}/${path2}/form/${row.partnerId}`}>보기/수정</Link></td>
@@ -248,6 +249,7 @@ export const AdminPartnerList: FC = (): JSX.Element => {
                                     <td>{toLocalTimeStr(row.planExpiryTime)}</td>
                                     <td>{toLocalTimeStr(row.createdAt)}</td>
                                     <td>{toLocalTimeStr(row.updatedAt)}</td>
+                                    <td>{row.userCount}</td>
                                     <td><Delete id={row.partnerId} /></td>
                                 </tr>
                             ))}

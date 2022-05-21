@@ -37,7 +37,7 @@ export const AdminUserList: FC = (): JSX.Element => {
     const [like1, setLike1] = useState(storage.getString([path1, path2, 'like1'].join('_'))=== '' ? 'true' : storage.getString([path1, path2, 'like2'].join('_')))
     const [keyword1, setKeyword1] = useState(storage.getString([path1, path2, 'keyword1'].join('_')))
     const [orderBy, setOrderBy] = useState(storage.getString([path1, path2, 'orderBy'].join('_')))
-    const [isAsc, setIsAsc] = useState(storage.getString([path1, path2, 'isAsc'].join('_')))
+    const [isAsc, setIsAsc] = useState(storage.getString([path1, path2, 'isAsc'].join('_')) === '' ? 'DESC' : 'ASC')
     // const [field2, setField2] = useState(storage.getString([path1, path2, 'field2'].join('_')))
     // const [like2, setLike2] = useState(storage.getString([path1, path2, 'like2'].join('_')) === '' ? 'true' : storage.getString([path1, path2, 'like2'].join('_')))
     // const [keyword2, setKeyword2] = useState(storage.getString([path1, path2, 'keyword2'].join('_')))

@@ -53,7 +53,24 @@ export const AdminAdminForm: FC = (): JSX.Element => {
 
     // api
     const apiGetOne = (): void => {
-        if (paramId === '') { setIsLoaded(true); return }
+        if (paramId === '') { 
+            setId(Number(paramId))
+
+            setUserNickname('')
+            setProfileImageUrl('')
+            setAccountId('')
+            setEmail('')
+            setGender('')
+            setBirth('')
+            setMd5Mobile('')
+            setMarketingAgreeTime(0)
+            setPartnerId(0)
+            setAccessLevel(0)
+            setCreatedAt('')
+            setUpdatedAt('')
+
+            setIsLoaded(true)
+            return }
 
         setInputColor({ backgroundColor: 'lightgray' })
 
@@ -133,7 +150,7 @@ export const AdminAdminForm: FC = (): JSX.Element => {
         if (adminCheckAuth() === false) { return }
 
         apiGetOne()
-    }, [])
+    }, [paramId])
 
     // render
     if (isLoaded === false) { return <Loading /> }

@@ -1,6 +1,10 @@
 
 import { Model } from '../Base/Model'
 
+export interface PartnerExtended extends Partner {
+    userCount?: number
+}
+
 export interface Partner {
     partnerId?: number
     partnerNickname?: string
