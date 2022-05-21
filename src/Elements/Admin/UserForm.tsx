@@ -144,29 +144,29 @@ export const AdminUserForm: FC = (): JSX.Element => {
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['userNickname'].name}</label>
                             <input className={styles.form1Input1} type='text' value={userNickname} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setUserNickname(evt.target.value)} /></p>
 
-                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['profileImageUrl'].name}</label>
+                        {/* <p className={styles.p1}><label className={styles.Form1Label1}>{column['profileImageUrl'].name}</label>
                             <input className={styles.form1Input1} type='text' value={profileImageUrl} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setProfileImageUrl(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['accountId'].name}</label>
                             <input className={styles.form1Input1} type='text' value={accountId} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setAccountId(evt.target.value)} /></p>
 
-                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['email'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={email} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setEmail(evt.target.value)} /></p>
-
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['gender'].name}</label>
                             <input className={styles.form1Input1} type='text' value={gender} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setGender(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['birth'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={birth} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setBirth(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={birth} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setBirth(evt.target.value)} /></p> */}
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['md5Mobile'].name}</label>
                             <input className={styles.form1Input1} type='text' value={md5Mobile} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setMd5Mobile(evt.target.value)} /></p>
 
-                            <p className={styles.p1}><label className={styles.Form1Label1}>{column['marketingAgreeTime'].name}</label>
+                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['email'].name}</label>
+                            <input className={styles.form1Input1} type='text' value={email} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setEmail(evt.target.value)} /></p>
+
+                        {/* <p className={styles.p1}><label className={styles.Form1Label1}>{column['marketingAgreeTime'].name}</label>
                             <input className={styles.form1Input1} type='text' value={marketingAgreeTime} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setMarketingAgreeTime(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['partnerId'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={partnerId} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPartnerId(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={partnerId} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPartnerId(evt.target.value)} /></p> */}
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['accessLevel'].name}</label>
                             <input className={styles.form1Input1} type='text' value={accessLevel} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setAccessLevel(evt.target.value)} /></p>

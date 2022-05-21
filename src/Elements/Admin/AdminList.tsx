@@ -14,6 +14,8 @@ import { toLocalTimeStr } from '../../Base/Time'
 import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
+import { text } from '../../Libs/Localization'
+import { eAccessLevel } from '../../Enums/AccessLevel'
 
 export const AdminAdminList: FC = (): JSX.Element => {
     // param
@@ -123,7 +125,8 @@ export const AdminAdminList: FC = (): JSX.Element => {
                                 ))} */}
                                 <th>{columns['userId'].name}</th>
                                 <th>보기/수정</th>
-                                <th>{columns['email'].name}</th>
+                                <th>{columns['userNickname'].name}</th>
+                                <th>{'관리자ID'}</th>
                                 <th>{columns['accessLevel'].name}</th>
                                 <th>{columns['createdAt'].name}</th>
                                 <th>{columns['updatedAt'].name}</th>
@@ -134,8 +137,9 @@ export const AdminAdminList: FC = (): JSX.Element => {
                                 <tr key={row.userId}>
                                     <td>{row.userId}</td>
                                     <td><Link className={'link1'} to={`/${path1}/${path2}/form/${row.userId}`}>보기/수정</Link></td>
+                                    <td>{row.userNickname}</td>
                                     <td>{row.email}</td>
-                                    <td>{row.accessLevel}</td>
+                                    <td>{text(eAccessLevel[row.accessLevel])}</td>
                                     <td>{toLocalTimeStr(row.createdAt)}</td>
                                     <td>{toLocalTimeStr(row.updatedAt)}</td>
                                 </tr>

@@ -9,11 +9,13 @@ import { AdminNavigation } from './Navigation'
 import { Footer } from '../Common/Footer'
 import { Loading } from '../Common/Loading'
 import { NoData } from '../Common/NoData'
-import { User, Users } from '../../Models/Users'
+import { UserExtended, User, Users } from '../../Models/Users'
 import { toLocalTimeStr } from '../../Base/Time'
 import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
+import { text } from '../../Libs/Localization'
+import { eAccessLevel } from '../../Enums/AccessLevel'
 
 export const AdminUserList: FC = (): JSX.Element => {
     // param
@@ -197,19 +199,21 @@ export const AdminUserList: FC = (): JSX.Element => {
                                 <th>보기/수정</th>
                                 <th>{columns['userNickname'].name}</th>
                                 <th>{columns['partnerId'].name}</th>
+                                <th>{'기관 이름'}</th>
                                 <th>{columns['accessLevel'].name}</th>
                                 <th>{columns['createdAt'].name}</th>
                                 <th>{columns['updatedAt'].name}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {rows.map((row: User): JSX.Element => (
+                            {rows.map((row: UserExtended): JSX.Element => (
                                 <tr key={row.userId}>
                                     <td>{row.userId}</td>
                                     <td><Link className={'link1'} to={`/${path1}/${path2}/form/${row.userId}`}>보기/수정</Link></td>
                                     <td>{row.userNickname}</td>
                                     <td>{row.partnerId}</td>
-                                    <td>{row.accessLevel}</td>
+                                    <td>{row.partnerNickname}</td>
+                                    <td>{text(eAccessLevel[row.accessLevel])}</td>
                                     <td>{toLocalTimeStr(row.createdAt)}</td>
                                     <td>{toLocalTimeStr(row.updatedAt)}</td>
                                 </tr>

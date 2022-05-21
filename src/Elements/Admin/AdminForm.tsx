@@ -15,6 +15,8 @@ import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
 import { nowStr, toLocalTimeStr } from '../../Base/Time'
 import { hex_md5 } from '../../Libs/MD5'
+import { eAccessLevel } from '../../Enums/AccessLevel'
+import { text } from '../../Libs/Localization'
 
 export const AdminAdminForm: FC = (): JSX.Element => {
     // param
@@ -151,20 +153,23 @@ export const AdminAdminForm: FC = (): JSX.Element => {
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['userId'].name}</label>
                             <input className={styles.form1Input1} type='text' value={id} readOnly={true} style={{ backgroundColor: 'lightgray' }} onChange={(evt: BaseSyntheticEvent): void => setId(evt.target.value)} /></p>
 
-                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['email'].name}</label>
+                        <p className={styles.p1}><label className={styles.Form1Label1}>{'관리자ID'}</label>
                             <input className={styles.form1Input1} type='text' value={email} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setEmail(evt.target.value)} /></p>
 
-                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['password'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={password} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPassword(evt.target.value)} /></p>
+                        {id === 0 ? <p className={styles.p1}><label className={styles.Form1Label1}>{column['password'].name}</label>
+                            <input className={styles.form1Input1} type='text' value={password} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPassword(evt.target.value)} /></p> : ''}
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['accessLevel'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={accessLevel} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setAccessLevel(evt.target.value)} /></p>
+                            <select value={accessLevel} onChange={(evt: BaseSyntheticEvent): void => setAccessLevel(evt.target.value)}>
+                                <option key={eAccessLevel.SERVICE_OPERATOR} value={eAccessLevel.SERVICE_OPERATOR}>{text(eAccessLevel[eAccessLevel.SERVICE_OPERATOR])}</option>
+                                <option key={eAccessLevel.SERVICE_ADMIN} value={eAccessLevel.SERVICE_ADMIN}>{text(eAccessLevel[eAccessLevel.SERVICE_ADMIN])}</option>
+                            </select></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['createdAt'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={createdAt} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setCreatedAt(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={createdAt} readOnly={true} style={{ backgroundColor: 'lightgray' }} onChange={(evt: BaseSyntheticEvent): void => setCreatedAt(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['updatedAt'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={updatedAt} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setUpdatedAt(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={updatedAt} readOnly={true} style={{ backgroundColor: 'lightgray' }} onChange={(evt: BaseSyntheticEvent): void => setUpdatedAt(evt.target.value)} /></p>
 
                         <hr />
                         <input className={styles.btnSubmit1} type='submit' value='확인' />

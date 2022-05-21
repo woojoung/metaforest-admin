@@ -9,7 +9,14 @@ const _text: { [locale: string]: { [key: string]: string } } = {
         BASIC: 'BASIC',
         PRO: 'PRO',
         PREMIUM: 'PREMIUM',
-        
+
+        UNKNOWN : '계정탈퇴',
+        USER : '상담자',
+        COUNSELOR : '내담자',
+        SERVICE_OPERATOR : '운영자',
+        SERVICE_ADMIN : '관리자',
+        SYSTEM_OPERATOR : '시스템 운영자',
+        SYSTEM_ADMIN : '시스템 관리자',
         
     }
 }
