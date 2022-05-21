@@ -14,6 +14,9 @@ import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
 import { Partner, Partners } from '../../Models/Partners'
+import { ePlanType } from '../../Enums/PlanType'
+import { text } from '../../Libs/Localization'
+import { eHttpStatus } from '../../Enums/HttpStatus'
 
 export const AdminPartnerList: FC = (): JSX.Element => {
     // param
@@ -110,6 +113,21 @@ export const AdminPartnerList: FC = (): JSX.Element => {
         })
     }
 
+    const apiDelete = (id: number): void => {
+        const apiRequest = new ApiRequest(eApiMessageType.USER_DELETE_PARTNER_REQ)
+        apiRequest.data = {
+            partnerId: id
+        }
+
+        xmlHttp.request(cfg.apiUrl+'partner/', apiRequest, (): void => {
+            const apiResponse = xmlHttp.parseResponse()
+            if (apiResponse.status !== eHttpStatus.OK) { return }
+
+            alert('삭제하였습니다.')
+            apiGetList(perPage, pageNum)
+        })
+    }
+
     // event
     const onSubmitForm = (evt: BaseSyntheticEvent): void => {
         evt.preventDefault()
@@ -132,6 +150,19 @@ export const AdminPartnerList: FC = (): JSX.Element => {
         const nextPageNum = pageNum + 25
         setPageNum(nextPageNum)
         apiGetList(perPage, nextPageNum)
+    }
+
+    // sub component
+    const Delete: FC<{ id?: number }> = (props: { id?: number }): JSX.Element => {
+        const onClickDelete = (evt: BaseSyntheticEvent): void => {
+            evt.preventDefault()
+
+            props.id && apiDelete(props.id)
+        }
+
+        return (
+            <span className={styles.a1} onClick={onClickDelete}>삭제</span>
+        )
     }
 
     // effect
@@ -197,11 +228,12 @@ export const AdminPartnerList: FC = (): JSX.Element => {
                                 <th>보기/수정</th>
                                 <th>{columns['partnerNickname'].name}</th>
                                 <th>{columns['plan'].name}</th>
+                                <th>{columns['isApproved'].name}</th>
                                 <th>{columns['planStartTime'].name}</th>
                                 <th>{columns['planExpiryTime'].name}</th>
-                                <th>{columns['isApproved'].name}</th>
                                 <th>{columns['createdAt'].name}</th>
                                 <th>{columns['updatedAt'].name}</th>
+                                <th>삭제</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -210,12 +242,13 @@ export const AdminPartnerList: FC = (): JSX.Element => {
                                     <td>{row.partnerId}</td>
                                     <td><Link className={'link1'} to={`/${path1}/${path2}/form/${row.partnerId}`}>보기/수정</Link></td>
                                     <td>{row.partnerNickname}</td>
-                                    <td>{row.plan}</td>
-                                    <td>{row.planStartTime}</td>
-                                    <td>{row.planExpiryTime}</td>
-                                    <td>{row.isApproved}</td>
+                                    <td>{text(ePlanType[row.plan])}</td>
+                                    <td>{row.isApproved === 'Y' ? '승인' : '미승인'}</td>
+                                    <td>{toLocalTimeStr(row.planStartTime)}</td>
+                                    <td>{toLocalTimeStr(row.planExpiryTime)}</td>
                                     <td>{toLocalTimeStr(row.createdAt)}</td>
                                     <td>{toLocalTimeStr(row.updatedAt)}</td>
+                                    <td><Delete id={row.partnerId} /></td>
                                 </tr>
                             ))}
                         </tbody>

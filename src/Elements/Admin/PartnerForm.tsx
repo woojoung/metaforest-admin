@@ -39,13 +39,25 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
     const [plan, setPlan] = useState(0)
     const [planStartTime, setPlanStartTime] = useState('')
     const [planExpiryTime, setPlanExpiryTime] = useState('')
-    const [isApproved, setIsApproved] = useState('')
+    const [isApproved, setIsApproved] = useState('N')
     const [createdAt, setCreatedAt] = useState('')
     const [updatedAt, setUpdatedAt] = useState('')
 
     // api
     const apiGetOne = (): void => {
-        if (paramId === '') { setIsLoaded(true); return }
+        if (paramId === '') { 
+            // setId(Number(paramId))
+            // setPartnerNickname('')
+            // setCode('')
+            // setPlan(0)
+            // setPlanStartTime('')
+            // setPlanExpiryTime('')
+            // setIsApproved('N')
+            // setCreatedAt('')
+            // setUpdatedAt('')
+            setIsLoaded(true)
+            return 
+        }
 
         setInputColor({ backgroundColor: 'lightgray' })
 
@@ -55,14 +67,14 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
         }
         xmlHttp.request(cfg.apiUrl+'partner/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
-            console.log(apiResponse)
+            // console.log(apiResponse)
             if (apiResponse.status !== eHttpStatus.OK) { return }
 
             const row = apiResponse.data.rows
-            console.log(row)
+            // console.log(row)
             setId(row.partnerId)
 
-            setPartnerNickname(row.userNickname)
+            setPartnerNickname(row.partnerNickname)
             setCode(row.code)
             setPlan(row.plan)
             setPlanStartTime(toLocalTimeStr(row.planStartTime))
@@ -73,11 +85,12 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
 
 
             setIsLoaded(true)
+            setInputColor({ backgroundColor: 'white' })
         })
     }
 
-       // event
-       const onSubmitForm = (evt: BaseSyntheticEvent): void => {
+    // event
+    const onSubmitForm = (evt: BaseSyntheticEvent): void => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.USER_CREATE_PARTNER_REQ : eApiMessageType.USER_UPDATE_PARTNER_REQ
@@ -98,7 +111,6 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
 
             let message = '수정하였습니다.'
             if (paramId === '') { message = '추가하였습니다.' }
-            alert(message)
 
             if (confirm(message)) {
                 navigate(`/${path1}/${path2}/list`)
@@ -139,11 +151,11 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['plan'].name}</label>
                         <select value={plan} onChange={(evt: BaseSyntheticEvent): void => setPlan(evt.target.value)}>
-                                <option key={ePlanType.NONE} value={ePlanType.NONE}>{'플랜 해지'}({ePlanType.NONE})</option>
-                                <option key={ePlanType.BASIC} value={ePlanType.BASIC}>{'BASIC'}({ePlanType.BASIC})</option>
-                                <option key={ePlanType.PRO} value={ePlanType.PRO}>{'PRO'}({ePlanType.PRO})</option>
-                                <option key={ePlanType.FREE_TRIAL} value={ePlanType.FREE_TRIAL}>{'FREE_TRIAL'}({ePlanType.FREE_TRIAL})</option>
-                                <option key={ePlanType.PREMIUM} value={ePlanType.PREMIUM}>{'PREMIUM'}({ePlanType.PREMIUM})</option>
+                                <option key={ePlanType.NONE} value={ePlanType.NONE}>{'플랜 해지'}</option>
+                                <option key={ePlanType.BASIC} value={ePlanType.BASIC}>{'BASIC'}</option>
+                                <option key={ePlanType.PRO} value={ePlanType.PRO}>{'PRO'}</option>
+                                <option key={ePlanType.FREE_TRIAL} value={ePlanType.FREE_TRIAL}>{'FREE_TRIAL'}</option>
+                                <option key={ePlanType.PREMIUM} value={ePlanType.PREMIUM}>{'PREMIUM'}</option>
                             </select></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['planStartTime'].name}</label>
@@ -153,13 +165,16 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             <input className={styles.form1Input1} type='text' value={planExpiryTime} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanExpiryTime(evt.target.value)} /></p>
                         
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['isApproved'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={isApproved} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setIsApproved(evt.target.value)} /></p>
+                            <select value={isApproved} onChange={(evt: BaseSyntheticEvent): void => setIsApproved(evt.target.value)}>
+                                <option key={'N'} value={'N'}>{'미승인'}</option>
+                                <option key={'Y'} value={'Y'}>{'승인'}</option>
+                            </select></p>
                         
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['createdAt'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={createdAt} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setCreatedAt(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={createdAt} readOnly={true} style={{ backgroundColor: 'lightgray' }} onChange={(evt: BaseSyntheticEvent): void => setCreatedAt(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['updatedAt'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={updatedAt} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setUpdatedAt(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={updatedAt} readOnly={true} style={{ backgroundColor: 'lightgray' }} onChange={(evt: BaseSyntheticEvent): void => setUpdatedAt(evt.target.value)} /></p>
 
                         <hr />
                         <input className={styles.btnSubmit1} type='submit' value='확인' />
