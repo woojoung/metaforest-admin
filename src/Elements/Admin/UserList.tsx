@@ -33,9 +33,11 @@ export const AdminUserList: FC = (): JSX.Element => {
 
     const [perPage] = useState(storage.getInteger([path1, path2, 'perPage'].join('_'), 25))
     const [pageNum, setPageNum] = useState(storage.getInteger([path1, path2, 'pageNum'].join('_'), 0))
-    // const [field1, setField1] = useState(storage.getString([path1, path2, 'field1'].join('_')))
-    // const [like1, setLike1] = useState(storage.getString([path1, path2, 'like1'].join('_'))=== '' ? 'true' : storage.getString([path1, path2, 'like2'].join('_')))
-    // const [keyword1, setKeyword1] = useState(storage.getString([path1, path2, 'keyword1'].join('_')))
+    const [field1, setField1] = useState(storage.getString([path1, path2, 'field1'].join('_')))
+    const [like1, setLike1] = useState(storage.getString([path1, path2, 'like1'].join('_'))=== '' ? 'true' : storage.getString([path1, path2, 'like2'].join('_')))
+    const [keyword1, setKeyword1] = useState(storage.getString([path1, path2, 'keyword1'].join('_')))
+    const [orderBy, setOrderBy] = useState(storage.getString([path1, path2, 'orderBy'].join('_')))
+    const [isAsc, setIsAsc] = useState(storage.getString([path1, path2, 'isAsc'].join('_')))
     // const [field2, setField2] = useState(storage.getString([path1, path2, 'field2'].join('_')))
     // const [like2, setLike2] = useState(storage.getString([path1, path2, 'like2'].join('_')) === '' ? 'true' : storage.getString([path1, path2, 'like2'].join('_')))
     // const [keyword2, setKeyword2] = useState(storage.getString([path1, path2, 'keyword2'].join('_')))
@@ -79,6 +81,11 @@ export const AdminUserList: FC = (): JSX.Element => {
             limit: _perPage + 1,
             offset: _pageNum,
             // conditions: conditions
+            keyword1: keyword1,
+            like1: like1,
+            field1: field1,
+            orderBy: orderBy,
+            isAsc: isAsc,
         }
         xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
@@ -101,9 +108,11 @@ export const AdminUserList: FC = (): JSX.Element => {
 
             storage.setInteger([path1, path2, 'perPage'].join('_'), _perPage)
             storage.setInteger([path1, path2, 'pageNum'].join('_'), _pageNum)
-            // storage.setString([path1, path2, 'field1'].join('_'), field1)
-            // storage.setString([path1, path2, 'like1'].join('_'), like1)
-            // storage.setString([path1, path2, 'keyword1'].join('_'), keyword1)
+            storage.setString([path1, path2, 'field1'].join('_'), field1)
+            storage.setString([path1, path2, 'like1'].join('_'), like1)
+            storage.setString([path1, path2, 'keyword1'].join('_'), keyword1)
+            storage.setString([path1, path2, 'orderBy'].join('_'), orderBy)
+            storage.setString([path1, path2, 'isAsc'].join('_'), isAsc)
             // storage.setString([path1, path2, 'field2'].join('_'), field2)
             // storage.setString([path1, path2, 'like2'].join('_'), like2)
             // storage.setString([path1, path2, 'keyword2'].join('_'), keyword2)
@@ -157,7 +166,7 @@ export const AdminUserList: FC = (): JSX.Element => {
             <AdminNavigation admin={{ 'id': adminId, 'accessLevel': adminAccessLevel }} />
             <main className={styles.main1}>
                 <h1>{h1}</h1>
-                {/* {paramId === '' &&
+                {paramId === '' &&
                     <form className={styles.form1Search} onSubmit={onSubmitForm}>
                         <select className={styles.select2 + ' ' + styles.margin1} value={field1} onChange={(evt: BaseSyntheticEvent): void => setField1(evt.target.value)}>
                             <option value=''>검색1</option>
@@ -171,7 +180,7 @@ export const AdminUserList: FC = (): JSX.Element => {
                         </select>
                         <input className={styles.input2 + ' ' + styles.margin1} size={15} type='text' value={keyword1} onChange={(evt: BaseSyntheticEvent): void => setKeyword1(evt.target.value)} />
 
-                        <select className={styles.select2 + ' ' + styles.margin1} value={field2} onChange={(evt: BaseSyntheticEvent): void => setField2(evt.target.value)}>
+                        {/* <select className={styles.select2 + ' ' + styles.margin1} value={field2} onChange={(evt: BaseSyntheticEvent): void => setField2(evt.target.value)}>
                             <option value=''>검색2</option>
                             {fieldsKeys.map((key, index): JSX.Element => (
                                 <option key={key} value={key}>{fieldValues[index].name}</option>
@@ -181,11 +190,23 @@ export const AdminUserList: FC = (): JSX.Element => {
                             <option value='false'>일치</option>
                             <option value='true'>포함</option>
                         </select>
-                        <input className={styles.input2 + ' ' + styles.margin1} type='text' size={15} value={keyword2} onChange={(evt: BaseSyntheticEvent): void => setKeyword2(evt.target.value)} />
+                        <input className={styles.input2 + ' ' + styles.margin1} type='text' size={15} value={keyword2} onChange={(evt: BaseSyntheticEvent): void => setKeyword2(evt.target.value)} /> */}
+                        
+                        <select className={styles.select2 + ' ' + styles.margin1} value={orderBy} onChange={(evt: BaseSyntheticEvent): void => setOrderBy(evt.target.value)}>
+                            <option value=''>정렬</option>
+                            {fieldsKeys.map((key, index): JSX.Element => (
+                                <option key={key} value={key}>{fieldValues[index].name}</option>
+                            ))}
+                        </select>
+
+                        <select  className={styles.select3 + ' ' + styles.margin1} value={isAsc.toString()} onChange={(evt: BaseSyntheticEvent): void => setIsAsc(evt.target.value)}>
+                            <option value='DESC'>내림차순</option>
+                            <option value='ASC'>오름차순</option>
+                        </select>
 
                         <input className={styles.btnSubmit1} type='submit' value='확인' />
                     </form >
-                } */}
+                }
 
 
                 <div className={styles.tableBox}>
