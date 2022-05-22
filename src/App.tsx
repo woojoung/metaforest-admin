@@ -8,6 +8,8 @@ import AdminPasswd from './Elements/Admin/AdminPasswd'
 import AdminHome from './Elements/Admin/Home'
 import AdminLogin from './Elements/Admin/Login'
 import AdminLogout from './Elements/Admin/Logout'
+import AdminNoticeForm from './Elements/Admin/NoticeForm'
+import AdminNoticeList from './Elements/Admin/NoticeList'
 import AdminPartnerForm from './Elements/Admin/PartnerForm'
 import AdminPartnerList from './Elements/Admin/PartnerList'
 import AdminUserForm from './Elements/Admin/UserForm'
@@ -24,6 +26,10 @@ ReactDOM.render(
                 <Route path='/admin/login' element={<AdminLogin />} />
                 <Route path='/admin/logout' element={<AdminLogout />} />
                 <Route path='/admin/passwd' element={<AdminPasswd />} />
+
+                <Route path='/admin/notice/form/:id' element={<AdminNoticeForm />} />
+                <Route path='/admin/notice/form' element={<AdminNoticeForm />} />
+                <Route path='/admin/notice/list' element={<AdminNoticeList />} />
                 
                 <Route path='/admin/admin/form/:id' element={<AdminAdminForm />} />
                 <Route path='/admin/admin/form' element={<AdminAdminForm />} />

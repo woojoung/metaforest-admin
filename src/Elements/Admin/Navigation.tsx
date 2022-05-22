@@ -26,6 +26,14 @@ export const AdminNavigation: FC<Indexable> = (props: Indexable): JSX.Element =>
             </li>
 
             <li className={styles.navList + ' ' + styles.dropdown1}>
+                <div className={styles.dropbtn}>공지사항</div>
+                <div className={styles.dropdownContent}>
+                    <Link to='/admin/notice/list'>공지사항 목록</Link>
+                    <Link to='/admin/notice/form'>공지사항 추가</Link>
+                </div>
+            </li>
+
+            <li className={styles.navList + ' ' + styles.dropdown1}>
                 <div className={styles.dropbtn}>기관</div>
                 <div className={styles.dropdownContent}>
                     <Link to='/admin/partner/list'>기관 목록</Link>

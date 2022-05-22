@@ -128,8 +128,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
     // render
     if (isLoaded === false) { return <Loading /> }
 
-    const inquiries = new Partners()
-    const column = inquiries.columns
+    const partners = new Partners()
+    const column = partners.columns
 
     return (
         <Fragment>
