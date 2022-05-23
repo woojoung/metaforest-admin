@@ -38,49 +38,17 @@ export const AdminUserList: FC = (): JSX.Element => {
     const [keyword1, setKeyword1] = useState(storage.getString([path1, path2, 'keyword1'].join('_')))
     const [orderBy, setOrderBy] = useState(storage.getString([path1, path2, 'orderBy'].join('_')))
     const [isAsc, setIsAsc] = useState(storage.getString([path1, path2, 'isAsc'].join('_')) === '' ? 'DESC' : 'ASC')
-    // const [field2, setField2] = useState(storage.getString([path1, path2, 'field2'].join('_')))
-    // const [like2, setLike2] = useState(storage.getString([path1, path2, 'like2'].join('_')) === '' ? 'true' : storage.getString([path1, path2, 'like2'].join('_')))
-    // const [keyword2, setKeyword2] = useState(storage.getString([path1, path2, 'keyword2'].join('_')))
     const [rows, setRows] = useState([])
     const [nextPage, setNextPage] = useState(false)
 
     // api
     const apiGetList = (_perPage: number, _pageNum: number): void => {
-        // const conditions = []
-
-        // let keywordType1 = 'string'
-        // let keywordType2 = 'string'
-        // if (field1 && keyword1) {
-        //     keywordType1 = columns[field1].type
-        //     if (JSON.parse(like1)) {
-        //         conditions.push({field1: keyword1})
-        //     } else {
-        //         if (keywordType1 === 'number') {
-        //             conditions.push({ field1: Number(keyword1)})
-        //         } else {
-        //             conditions.push({ field1: keyword1 })
-        //         }
-        //     }
-        // }
-        // if (field2 && keyword2) {
-        //     keywordType2 = columns[field2].type
-        //     if (JSON.parse(like2)) {
-        //         conditions.push({field2: keyword2})
-        //     } else {
-        //         if (keywordType2 === 'number') {
-        //             conditions.push({ field2: Number(keyword2)})
-        //         } else {
-        //             conditions.push({ field2: keyword2 })
-        //         }
-        //     }
-        // }
 
         const apiRequest = new ApiRequest(eApiMessageType.USER_GET_LIST_REQ)
         
         apiRequest.data = {
             limit: _perPage + 1,
             offset: _pageNum,
-            // conditions: conditions
             keyword1: keyword1,
             like1: like1,
             field1: field1,
@@ -113,9 +81,6 @@ export const AdminUserList: FC = (): JSX.Element => {
             storage.setString([path1, path2, 'keyword1'].join('_'), keyword1)
             storage.setString([path1, path2, 'orderBy'].join('_'), orderBy)
             storage.setString([path1, path2, 'isAsc'].join('_'), isAsc)
-            // storage.setString([path1, path2, 'field2'].join('_'), field2)
-            // storage.setString([path1, path2, 'like2'].join('_'), like2)
-            // storage.setString([path1, path2, 'keyword2'].join('_'), keyword2)
 
             setIsLoaded(true)
         })
@@ -180,18 +145,6 @@ export const AdminUserList: FC = (): JSX.Element => {
                         </select>
                         <input className={styles.input2 + ' ' + styles.margin1} size={15} type='text' value={keyword1} onChange={(evt: BaseSyntheticEvent): void => setKeyword1(evt.target.value)} />
 
-                        {/* <select className={styles.select2 + ' ' + styles.margin1} value={field2} onChange={(evt: BaseSyntheticEvent): void => setField2(evt.target.value)}>
-                            <option value=''>검색2</option>
-                            {fieldsKeys.map((key, index): JSX.Element => (
-                                <option key={key} value={key}>{fieldValues[index].name}</option>
-                            ))}
-                        </select>
-                        <select className={styles.select3 + ' ' + styles.margin1} value={like2.toString()} onChange={(evt: BaseSyntheticEvent): void => setLike2(evt.target.value)}>
-                            <option value='false'>일치</option>
-                            <option value='true'>포함</option>
-                        </select>
-                        <input className={styles.input2 + ' ' + styles.margin1} type='text' size={15} value={keyword2} onChange={(evt: BaseSyntheticEvent): void => setKeyword2(evt.target.value)} /> */}
-                        
                         <select className={styles.select2 + ' ' + styles.margin1} value={orderBy} onChange={(evt: BaseSyntheticEvent): void => setOrderBy(evt.target.value)}>
                             <option value=''>정렬</option>
                             {fieldsKeys.map((key, index): JSX.Element => (
