@@ -150,7 +150,7 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             <input className={styles.form1Input1} type='text' value={code} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setCode(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['plan'].name}</label>
-                        <select value={plan} onChange={(evt: BaseSyntheticEvent): void => setPlan(evt.target.value)}>
+                            <select value={plan} onChange={(evt: BaseSyntheticEvent): void => setPlan(evt.target.value)}>
                                 <option key={ePlanType.NONE} value={ePlanType.NONE}>{'플랜 해지'}</option>
                                 <option key={ePlanType.FREE_TRIAL} value={ePlanType.FREE_TRIAL}>{'FREE_TRIAL'}</option>
                                 <option key={ePlanType.BASIC} value={ePlanType.BASIC}>{'BASIC'}</option>

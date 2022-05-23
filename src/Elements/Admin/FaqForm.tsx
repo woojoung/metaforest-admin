@@ -13,11 +13,12 @@ import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
 import { nowStr, toLocalTimeStr } from '../../Base/Time'
-import { Notices } from '../../Models/Notices'
+import { Faqs } from '../../Models/Faqs'
 import { Editor } from '@tinymce/tinymce-react'
 import { Any } from '../../Base/Type'
+import { eFaqCategory } from '../../Enums/FaqCategory'
 
-export const AdminNoticeForm: FC = (): JSX.Element => {
+export const AdminFaqForm: FC = (): JSX.Element => {
     // param
     const params = useParams()
     const navigate = useNavigate()
@@ -29,13 +30,14 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
     const [adminAccessLevel] = useState(storage.getInteger('adminAccessLevel', 0))
 
     const [isLoaded, setIsLoaded] = useState(false)
-    const [h1] = useState('공지사항')
+    const [h1] = useState('FAQ')
     const [path1] = useState('admin')
-    const [path2] = useState('notice')
+    const [path2] = useState('faq')
     const [id, setId] = useState(Number(paramId))
     const [inputColor, setInputColor] = useState({ backgroundColor: 'white' })
 
     const [ordering, setOrdering] = useState(1)
+    const [category, setCategory] = useState(eFaqCategory.NONE)
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [isApproved, setIsApproved] = useState('N')
@@ -56,6 +58,7 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
         if (paramId === '') { 
             setId(Number(paramId))
             setOrdering(0)
+            setCategory(0)
             setTitle('')
             setContent('')
             setIsApproved('N')
@@ -67,20 +70,21 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
 
         setInputColor({ backgroundColor: 'lightgray' })
 
-        const apiRequest = new ApiRequest(eApiMessageType.USER_GET_ONE_NOTICE_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.USER_GET_ONE_FAQ_REQ)
         apiRequest.data = {
-            noticeId: id,
+            faqId: id,
         }
-        xmlHttp.request(cfg.apiUrl+'partner/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'faq/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             // console.log(apiResponse)
             if (apiResponse.status !== eHttpStatus.OK) { return }
 
             const row = apiResponse.data.rows
             // console.log(row)
-            setId(row.noticeId)
+            setId(row.faqId)
 
             setOrdering(row.ordering)
+            setCategory(row.category)
             setTitle(row.title)
             setContent(row.content)
             setIsApproved(row.isApproved)
@@ -97,15 +101,16 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
     const onSubmitForm = (evt: BaseSyntheticEvent): void => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
-        apiRequest.msgType = (paramId === '') ? eApiMessageType.USER_CREATE_NOTICE_REQ : eApiMessageType.USER_UPDATE_NOTICE_REQ
+        apiRequest.msgType = (paramId === '') ? eApiMessageType.USER_CREATE_FAQ_REQ : eApiMessageType.USER_UPDATE_FAQ_REQ
 
         if (paramId !== '' && _isContentChanged === false) {
             handleEditorChange(content, null)
         }
 
         apiRequest.data = {
-            noticeId: id,
+            faqId: id,
             ordering: ordering,
+            category: category,
             title: title,
             content: _content,
             isApproved: isApproved
@@ -115,7 +120,7 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
             apiRequest.data.updatedAt = nowStr() 
         }
 
-        xmlHttp.request(cfg.apiUrl+'notice/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'faq/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
             if (apiResponse.status !== 200) { return }
@@ -139,8 +144,8 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
     // render
     if (isLoaded === false) { return <Loading /> }
 
-    const notices = new Notices()
-    const column = notices.columns
+    const faqs = new Faqs()
+    const column = faqs.columns
 
     return (
         <Fragment>
@@ -151,11 +156,21 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
                 <div>
                     <form className={styles.form1} onSubmit={onSubmitForm}>
 
-                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['noticeId'].name}</label>
+                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['faqId'].name}</label>
                             <input className={styles.form1Input1} type='text' value={id} readOnly={true} style={{ backgroundColor: 'lightgray' }} onChange={(evt: BaseSyntheticEvent): void => setId(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['ordering'].name}</label>
                             <input className={styles.form1Input1} type='text' value={ordering} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setOrdering(evt.target.value)} /></p>
+
+                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['category'].name}</label>
+                            <select value={category} onChange={(evt: BaseSyntheticEvent): void => setCategory(evt.target.value)}>
+                                <option key={eFaqCategory.NONE} value={eFaqCategory.NONE}>{'플랜 해지'}</option>
+                                <option key={eFaqCategory.ONE_TO_ONE} value={eFaqCategory.ONE_TO_ONE}>{'FREE_TRIAL'}</option>
+                                <option key={eFaqCategory.GROUP} value={eFaqCategory.GROUP}>{'BASIC'}</option>
+                                <option key={eFaqCategory.EAP} value={eFaqCategory.EAP}>{'PRO'}</option>
+                                <option key={eFaqCategory.TUTORIAL} value={eFaqCategory.TUTORIAL}>{'튜토리얼'}</option>
+                                <option key={eFaqCategory.COMMUNITY} value={eFaqCategory.COMMUNITY}>{'커뮤니티'}</option>
+                            </select></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['title'].name}</label>
                             <input className={styles.form1Input1} type='text' value={title} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setTitle(evt.target.value)} /></p>
@@ -196,4 +211,4 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
     )
 }
 
-export default AdminNoticeForm
+export default AdminFaqForm
