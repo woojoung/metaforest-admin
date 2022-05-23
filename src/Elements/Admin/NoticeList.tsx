@@ -14,8 +14,6 @@ import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
 import { Notice, Notices } from '../../Models/Notices'
-import { ePlanType } from '../../Enums/PlanType'
-import { text } from '../../Libs/Localization'
 import { eHttpStatus } from '../../Enums/HttpStatus'
 
 export const AdminNoticeList: FC = (): JSX.Element => {
