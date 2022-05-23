@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AdminAdminForm from './Elements/Admin/AdminForm'
 import AdminAdminList from './Elements/Admin/AdminList'
 import AdminPasswd from './Elements/Admin/AdminPasswd'
+import AdminFaqForm from './Elements/Admin/FaqForm'
+import AdminFaqList from './Elements/Admin/FaqList'
 import AdminHome from './Elements/Admin/Home'
 import AdminLogin from './Elements/Admin/Login'
 import AdminLogout from './Elements/Admin/Logout'
@@ -30,6 +32,10 @@ ReactDOM.render(
                 <Route path='/admin/notice/form/:id' element={<AdminNoticeForm />} />
                 <Route path='/admin/notice/form' element={<AdminNoticeForm />} />
                 <Route path='/admin/notice/list' element={<AdminNoticeList />} />
+
+                <Route path='/admin/faq/form/:id' element={<AdminFaqForm />} />
+                <Route path='/admin/faq/form' element={<AdminFaqForm />} />
+                <Route path='/admin/faq/list' element={<AdminFaqList />} />
                 
                 <Route path='/admin/admin/form/:id' element={<AdminAdminForm />} />
                 <Route path='/admin/admin/form' element={<AdminAdminForm />} />
