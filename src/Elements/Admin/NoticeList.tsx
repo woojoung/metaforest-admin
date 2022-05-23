@@ -37,49 +37,18 @@ export const AdminNoticeList: FC = (): JSX.Element => {
     // const [field1, setField1] = useState(storage.getString([path1, path2, 'field1'].join('_')))
     // const [like1, setLike1] = useState(storage.getString([path1, path2, 'like1'].join('_'))=== '' ? 'true' : storage.getString([path1, path2, 'like2'].join('_')))
     // const [keyword1, setKeyword1] = useState(storage.getString([path1, path2, 'keyword1'].join('_')))
-    // const [field2, setField2] = useState(storage.getString([path1, path2, 'field2'].join('_')))
-    // const [like2, setLike2] = useState(storage.getString([path1, path2, 'like2'].join('_')) === '' ? 'true' : storage.getString([path1, path2, 'like2'].join('_')))
-    // const [keyword2, setKeyword2] = useState(storage.getString([path1, path2, 'keyword2'].join('_')))
     const [rows, setRows] = useState([])
     const [nextPage, setNextPage] = useState(false)
 
     // api
     const apiGetList = (_perPage: number, _pageNum: number): void => {
-        // const conditions = []
-
-        // let keywordType1 = 'string'
-        // let keywordType2 = 'string'
-        // if (field1 && keyword1) {
-        //     keywordType1 = columns[field1].type
-        //     if (JSON.parse(like1)) {
-        //         conditions.push({field1: keyword1})
-        //     } else {
-        //         if (keywordType1 === 'number') {
-        //             conditions.push({ field1: Number(keyword1)})
-        //         } else {
-        //             conditions.push({ field1: keyword1 })
-        //         }
-        //     }
-        // }
-        // if (field2 && keyword2) {
-        //     keywordType2 = columns[field2].type
-        //     if (JSON.parse(like2)) {
-        //         conditions.push({field2: keyword2})
-        //     } else {
-        //         if (keywordType2 === 'number') {
-        //             conditions.push({ field2: Number(keyword2)})
-        //         } else {
-        //             conditions.push({ field2: keyword2 })
-        //         }
-        //     }
-        // }
 
         const apiRequest = new ApiRequest(eApiMessageType.USER_GET_LIST_NOTICE_REQ)
         
         apiRequest.data = {
             limit: _perPage + 1,
             offset: _pageNum,
-            // conditions: conditions
+
         }
         xmlHttp.request(cfg.apiUrl+'notice/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
@@ -105,9 +74,6 @@ export const AdminNoticeList: FC = (): JSX.Element => {
             // storage.setString([path1, path2, 'field1'].join('_'), field1)
             // storage.setString([path1, path2, 'like1'].join('_'), like1)
             // storage.setString([path1, path2, 'keyword1'].join('_'), keyword1)
-            // storage.setString([path1, path2, 'field2'].join('_'), field2)
-            // storage.setString([path1, path2, 'like2'].join('_'), like2)
-            // storage.setString([path1, path2, 'keyword2'].join('_'), keyword2)
 
             setIsLoaded(true)
         })
@@ -116,7 +82,7 @@ export const AdminNoticeList: FC = (): JSX.Element => {
     const apiDelete = (id: number): void => {
         const apiRequest = new ApiRequest(eApiMessageType.USER_DELETE_NOTICE_REQ)
         apiRequest.data = {
-            partnerId: id
+            noticeId: id
         }
 
         xmlHttp.request(cfg.apiUrl+'notice/', apiRequest, (): void => {
@@ -179,7 +145,12 @@ export const AdminNoticeList: FC = (): JSX.Element => {
     const columns = notices.columns
 
     const fieldsKeys = Object.keys(notices.columns)
+    const index = fieldsKeys.indexOf('content')
+
     const fieldValues = Object.values(notices.columns)
+
+    fieldsKeys.splice(index, 1)
+    fieldValues.splice(index, 1)
 
     return (
         <Fragment>

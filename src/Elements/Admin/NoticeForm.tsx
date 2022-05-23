@@ -98,14 +98,23 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.USER_CREATE_NOTICE_REQ : eApiMessageType.USER_UPDATE_NOTICE_REQ
+
+        if (paramId !== '' && _isContentChanged === false) {
+            handleEditorChange(content, null)
+        }
+
         apiRequest.data = {
             noticeId: id,
             ordering: ordering,
             title: title,
-            content: content,
-            isApproved: isApproved,
-            updatedAt: nowStr(),
+            content: _content,
+            isApproved: isApproved
         }
+
+        if (paramId !== '') {
+            apiRequest.data.updatedAt = nowStr() 
+        }
+
         xmlHttp.request(cfg.apiUrl+'notice/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
