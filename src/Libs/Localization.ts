@@ -11,8 +11,8 @@ const _text: { [locale: string]: { [key: string]: string } } = {
         PREMIUM: 'PREMIUM',
 
         UNKNOWN : '계정탈퇴',
-        USER : '상담자',
-        COUNSELOR : '내담자',
+        USER : '내담자',
+        COUNSELOR : '상담자',
         SERVICE_OPERATOR : '운영자',
         SERVICE_ADMIN : '관리자',
         SYSTEM_OPERATOR : '시스템 운영자',
