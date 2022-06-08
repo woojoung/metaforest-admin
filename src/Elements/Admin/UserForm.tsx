@@ -53,11 +53,11 @@ export const AdminUserForm: FC = (): JSX.Element => {
 
         setInputColor({ backgroundColor: 'lightgray' })
 
-        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_GET_ONE_INFO_USER_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_GET_ONE_USER_REQ)
         apiRequest.data = {
             userId: id,
         }
-        xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             if (apiResponse.status !== eHttpStatus.OK) { return }
 
@@ -101,7 +101,7 @@ export const AdminUserForm: FC = (): JSX.Element => {
             accessLevel: accessLevel,
             updatedAt: nowStr(),
         }
-        xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
             if (apiResponse.status !== 200) { return }
