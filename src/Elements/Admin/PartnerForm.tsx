@@ -12,9 +12,11 @@ import { Loading } from '../Common/Loading'
 import { adminCheckAuth } from './Auth'
 import { cfg } from '../../Base/Config'
 import styles from '../../Styles/Style.module.css'
-import { nowStr, toLocalTimeStr } from '../../Base/Time'
+import { nowStr, toLocalTimeStr, newTime } from '../../Base/Time'
 import { Partners } from '../../Models/Partners'
 import { ePlanType } from '../../Enums/PlanType'
+import DatePicker from 'react-datepicker'
+import { ko } from 'date-fns/esm/locale'
 
 export const AdminPartnerForm: FC = (): JSX.Element => {
     // param
@@ -37,8 +39,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
     const [partnerNickname, setPartnerNickname] = useState('')
     const [code, setCode] = useState('')
     const [plan, setPlan] = useState(0)
-    const [planStartTime, setPlanStartTime] = useState('')
-    const [planExpiryTime, setPlanExpiryTime] = useState('')
+    const [planStartTime, setPlanStartTime] = useState(new Date())
+    const [planExpiryTime, setPlanExpiryTime] = useState(new Date())
     const [isApproved, setIsApproved] = useState('N')
     const [createdAt, setCreatedAt] = useState('')
     const [updatedAt, setUpdatedAt] = useState('')
@@ -50,8 +52,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
             setPartnerNickname('')
             setCode('')
             setPlan(0)
-            setPlanStartTime('')
-            setPlanExpiryTime('')
+            setPlanStartTime(new Date())
+            setPlanExpiryTime(new Date())
             setIsApproved('N')
             setCreatedAt('')
             setUpdatedAt('')
@@ -77,8 +79,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
             setPartnerNickname(row.partnerNickname)
             setCode(row.code)
             setPlan(row.plan)
-            setPlanStartTime(toLocalTimeStr(row.planStartTime))
-            setPlanExpiryTime(toLocalTimeStr(row.planExpiryTime))
+            setPlanStartTime(newTime(row.planStartTime))
+            setPlanExpiryTime(newTime(row.planExpiryTime))
             setIsApproved(row.isApproved)
             setCreatedAt(toLocalTimeStr(row.createdAt))
             setUpdatedAt(toLocalTimeStr(row.updatedAt))
@@ -99,8 +101,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
             partnerNickname: partnerNickname,
             code: code,
             plan: plan,
-            planStartTime: planStartTime,
-            planExpiryTime: planExpiryTime,
+            planStartTime: newTime(planStartTime).toLocaleTimeString(),
+            planExpiryTime: newTime(planExpiryTime).toLocaleTimeString(),
             isApproved: isApproved,
             updatedAt: nowStr(),
         }
@@ -159,10 +161,31 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             </select></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['planStartTime'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={planStartTime} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanStartTime(evt.target.value)} /></p>
+                            {/* <input className={styles.form1Input1} type='text' value={planStartTime} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanStartTime(evt.target.value)} /> */}
+                            <DatePicker 
+                                locale={ko}
+                                dateFormat={'yyyy-MM-dd 00:00:00'}
+                                selected={planStartTime} 
+                                onChange={(date: Date) => setPlanStartTime(date)}
+                                selectsStart
+                                startDate={planStartTime}
+                                endDate={planExpiryTime}
+                            />
+                        </p>
                         
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['planExpiryTime'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={planExpiryTime} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanExpiryTime(evt.target.value)} /></p>
+                            {/* <input className={styles.form1Input1} type='text' value={planExpiryTime} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanExpiryTime(evt.target.value)} /> */}
+                            <DatePicker 
+                                locale={ko}
+                                dateFormat={'yyyy-MM-dd 23:59:59'}
+                                selected={planExpiryTime} 
+                                onChange={(date: Date) => setPlanExpiryTime(date)}
+                                selectsEnd
+                                startDate={planStartTime}
+                                endDate={planExpiryTime}
+                                minDate={planStartTime}
+                            />
+                        </p>
                         
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['isApproved'].name}</label>
                             <select value={isApproved} onChange={(evt: BaseSyntheticEvent): void => setIsApproved(evt.target.value)}>
