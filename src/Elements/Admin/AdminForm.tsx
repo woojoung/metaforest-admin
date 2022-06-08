@@ -74,11 +74,11 @@ export const AdminAdminForm: FC = (): JSX.Element => {
 
         setInputColor({ backgroundColor: 'lightgray' })
 
-        const apiRequest = new ApiRequest(eApiMessageType.USER_GET_ONE_INFO_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_GET_ONE_USER_REQ)
         apiRequest.data = {
             userId: id,
         }
-        xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
             if (apiResponse.status !== eHttpStatus.OK) { return }
@@ -108,7 +108,7 @@ export const AdminAdminForm: FC = (): JSX.Element => {
        const onSubmitForm = (evt: BaseSyntheticEvent): void => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
-        apiRequest.msgType = (paramId === '') ? eApiMessageType.USER_CREATE_REQ : eApiMessageType.USER_UPDATE_REQ
+        apiRequest.msgType = (paramId === '') ? eApiMessageType.ADMIN_CREATE_USER_REQ : eApiMessageType.ADMIN_UPDATE_USER_REQ
         const hexMd5 = hex_md5(email + hex_md5(password))
         apiRequest.data = (paramId === '') ? {
             userId: id,
@@ -130,7 +130,7 @@ export const AdminAdminForm: FC = (): JSX.Element => {
             accessLevel: accessLevel,
             updatedAt: nowStr(),
         }
-        xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
             if (apiResponse.status !== 200) { return }
