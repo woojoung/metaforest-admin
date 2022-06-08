@@ -1,7 +1,6 @@
 
 import { Any } from '../Base/Type'
 import { eHttpStatus } from '../Enums/HttpStatus'
-import { eErrorCode } from '../Enums/ErrorCode'
 import { eApiMessageType } from '../Enums/ApiMessageType'
 import { eResponseMessage } from '../Enums/ResponseMessage'
 

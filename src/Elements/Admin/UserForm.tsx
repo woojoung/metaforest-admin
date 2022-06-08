@@ -83,8 +83,8 @@ export const AdminUserForm: FC = (): JSX.Element => {
         })
     }
 
-       // event
-       const onSubmitForm = (evt: BaseSyntheticEvent): void => {
+    // event
+    const onSubmitForm = (evt: BaseSyntheticEvent): void => {
         evt.preventDefault()
         const apiRequest = new ApiRequest(eApiMessageType.ADMIN_UPDATE_USER_REQ)
         apiRequest.data = {

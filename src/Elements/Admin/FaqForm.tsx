@@ -183,21 +183,21 @@ export const AdminFaqForm: FC = (): JSX.Element => {
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['content'].name}</label>
                             <Editor
-                                    apiKey={'1fmpc24j5xq66xb3nmfijvrl614iwmfmcektko3okxgzfbyw'}
-                                    initialValue={content}
-                                    init={{
-                                        height: 600,
-                                        menubar: false,
-                                        plugins: [
-                                            'advlist autolink lists link image anchor',
-                                            'visualblocks code fullscreen',
-                                            'paste help wordcount'
-                                        ],
-                                        toolbar: 'undo redo | formatselect | fontsizeselect | bold italic forecolor backcolor | \
+                                apiKey={'1fmpc24j5xq66xb3nmfijvrl614iwmfmcektko3okxgzfbyw'}
+                                initialValue={content}
+                                init={{
+                                    height: 600,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image anchor',
+                                        'visualblocks code fullscreen',
+                                        'paste help wordcount'
+                                    ],
+                                    toolbar: 'undo redo | formatselect | fontsizeselect | bold italic forecolor backcolor | \
                                     alignleft aligncenter alignright alignjustify | \
                                     bullist numlist outdent indent | image removeformat | code fullscreen help'
-                                    }}
-                                    onEditorChange={handleEditorChange} /></p>
+                                }}
+                                onEditorChange={handleEditorChange} /></p>
                         
                         
 

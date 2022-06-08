@@ -8,7 +8,7 @@ export class ApiRequest {
     email: string
     password: string
 
-    constructor( msgType = 0, data: Any = null, email: string = '', password: string = '') {
+    constructor( msgType = 0, data: Any = null, email = '', password = '') {
         this.msgType = msgType
         this.data = data
         this.email = email

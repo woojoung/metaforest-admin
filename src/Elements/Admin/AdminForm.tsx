@@ -1,5 +1,5 @@
 
-import React, { FC, useState, useEffect, Fragment, BaseSyntheticEvent, useImperativeHandle } from 'react'
+import React, { FC, useState, useEffect, Fragment, BaseSyntheticEvent } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { eHttpStatus } from '../../Enums/HttpStatus'
 import { eApiMessageType } from '../../Enums/ApiMessageType'
@@ -104,8 +104,8 @@ export const AdminAdminForm: FC = (): JSX.Element => {
         })
     }
 
-       // event
-       const onSubmitForm = (evt: BaseSyntheticEvent): void => {
+    // event
+    const onSubmitForm = (evt: BaseSyntheticEvent): void => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.ADMIN_CREATE_USER_REQ : eApiMessageType.ADMIN_UPDATE_USER_REQ
