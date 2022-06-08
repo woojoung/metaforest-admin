@@ -32,9 +32,11 @@ export const AdminNoticeList: FC = (): JSX.Element => {
 
     const [perPage] = useState(storage.getInteger([path1, path2, 'perPage'].join('_'), 25))
     const [pageNum, setPageNum] = useState(storage.getInteger([path1, path2, 'pageNum'].join('_'), 0))
-    // const [field1, setField1] = useState(storage.getString([path1, path2, 'field1'].join('_')))
-    // const [like1, setLike1] = useState(storage.getString([path1, path2, 'like1'].join('_'))=== '' ? 'true' : storage.getString([path1, path2, 'like2'].join('_')))
-    // const [keyword1, setKeyword1] = useState(storage.getString([path1, path2, 'keyword1'].join('_')))
+    const [field1, setField1] = useState(storage.getString([path1, path2, 'field1'].join('_')))
+    const [like1, setLike1] = useState(storage.getString([path1, path2, 'like1'].join('_') )=== '' ? 'true' : 'false')
+    const [keyword1, setKeyword1] = useState(storage.getString([path1, path2, 'keyword1'].join('_')))
+    const [orderBy, setOrderBy] = useState(storage.getString([path1, path2, 'orderBy'].join('_')))
+    const [isAsc, setIsAsc] = useState(storage.getString([path1, path2, 'isAsc'].join('_')) === '' ? 'DESC' : 'ASC')
     const [rows, setRows] = useState([])
     const [nextPage, setNextPage] = useState(false)
 
@@ -46,6 +48,11 @@ export const AdminNoticeList: FC = (): JSX.Element => {
         apiRequest.data = {
             limit: _perPage + 1,
             offset: _pageNum,
+            keyword1: keyword1,
+            like1: like1,
+            field1: field1,
+            orderBy: orderBy,
+            isAsc: isAsc,
 
         }
         xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
@@ -69,9 +76,11 @@ export const AdminNoticeList: FC = (): JSX.Element => {
 
             storage.setInteger([path1, path2, 'perPage'].join('_'), _perPage)
             storage.setInteger([path1, path2, 'pageNum'].join('_'), _pageNum)
-            // storage.setString([path1, path2, 'field1'].join('_'), field1)
-            // storage.setString([path1, path2, 'like1'].join('_'), like1)
-            // storage.setString([path1, path2, 'keyword1'].join('_'), keyword1)
+            storage.setString([path1, path2, 'field1'].join('_'), field1)
+            storage.setString([path1, path2, 'like1'].join('_'), like1)
+            storage.setString([path1, path2, 'keyword1'].join('_'), keyword1)
+            storage.setString([path1, path2, 'orderBy'].join('_'), orderBy)
+            storage.setString([path1, path2, 'isAsc'].join('_'), isAsc)
 
             setIsLoaded(true)
         })
