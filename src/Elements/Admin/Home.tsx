@@ -1,24 +1,24 @@
 
 import React, { FC, useState, useEffect, Fragment, BaseSyntheticEvent } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { eHttpStatus } from '../../Enums/HttpStatus'
-import { eApiMessageType } from '../../Enums/ApiMessageType'
-import { xmlHttp } from '../../Libs/XmlHttp'
+// import { useNavigate, useParams } from 'react-router-dom'
+// import { eHttpStatus } from '../../Enums/HttpStatus'
+// import { eApiMessageType } from '../../Enums/ApiMessageType'
+// import { xmlHttp } from '../../Libs/XmlHttp'
 import { storage } from '../../Libs/Storage'
-import { ApiRequest } from '../../Libs/ApiRequest'
+// import { ApiRequest } from '../../Libs/ApiRequest'
 import { AdminNavigation } from './Navigation'
 import { Footer } from '../Common/Footer'
 import { Loading } from '../Common/Loading'
-import { cfg } from '../../Base/Config'
-import { eEnvironment } from '../../Enums/Environment'
+// import { cfg } from '../../Base/Config'
+// import { eEnvironment } from '../../Enums/Environment'
 import styles from '../../Styles/Style.module.css'
 import { adminCheckAuth } from './Auth'
 
 export const AdminHome: FC = (props): JSX.Element => {
 
     // param
-    const params = useParams()
-    const paramId = params.id ? params.id : ''
+    // const params = useParams()
+    // const paramId = params.id ? params.id : ''
     // console.log(paramId)
 
     // state
