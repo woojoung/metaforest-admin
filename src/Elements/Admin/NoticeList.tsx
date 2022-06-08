@@ -164,7 +164,7 @@ export const AdminNoticeList: FC = (): JSX.Element => {
             <AdminNavigation admin={{ 'id': adminId, 'accessLevel': adminAccessLevel }} />
             <main className={styles.main1}>
                 <h1>{h1}</h1>
-                {/* {paramId === '' &&
+                {paramId === '' &&
                     <form className={styles.form1Search} onSubmit={onSubmitForm}>
                         <select className={styles.select2 + ' ' + styles.margin1} value={field1} onChange={(evt: BaseSyntheticEvent): void => setField1(evt.target.value)}>
                             <option value=''>검색1</option>
@@ -178,21 +178,21 @@ export const AdminNoticeList: FC = (): JSX.Element => {
                         </select>
                         <input className={styles.input2 + ' ' + styles.margin1} size={15} type='text' value={keyword1} onChange={(evt: BaseSyntheticEvent): void => setKeyword1(evt.target.value)} />
 
-                        <select className={styles.select2 + ' ' + styles.margin1} value={field2} onChange={(evt: BaseSyntheticEvent): void => setField2(evt.target.value)}>
-                            <option value=''>검색2</option>
+                        <select className={styles.select2 + ' ' + styles.margin1} value={orderBy} onChange={(evt: BaseSyntheticEvent): void => setOrderBy(evt.target.value)}>
+                            <option value=''>정렬</option>
                             {fieldsKeys.map((key, index): JSX.Element => (
                                 <option key={key} value={key}>{fieldValues[index].name}</option>
                             ))}
                         </select>
-                        <select className={styles.select3 + ' ' + styles.margin1} value={like2.toString()} onChange={(evt: BaseSyntheticEvent): void => setLike2(evt.target.value)}>
-                            <option value='false'>일치</option>
-                            <option value='true'>포함</option>
+
+                        <select  className={styles.select3 + ' ' + styles.margin1} value={isAsc.toString()} onChange={(evt: BaseSyntheticEvent): void => setIsAsc(evt.target.value)}>
+                            <option value='DESC'>내림차순</option>
+                            <option value='ASC'>오름차순</option>
                         </select>
-                        <input className={styles.input2 + ' ' + styles.margin1} type='text' size={15} value={keyword2} onChange={(evt: BaseSyntheticEvent): void => setKeyword2(evt.target.value)} />
 
                         <input className={styles.btnSubmit1} type='submit' value='확인' />
                     </form >
-                } */}
+                }
 
 
                 <div className={styles.tableBox}>
