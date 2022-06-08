@@ -40,14 +40,14 @@ export const AdminAdminList: FC = (): JSX.Element => {
     const apiGetList = (_perPage: number, _pageNum: number): void => {
         
 
-        const apiRequest = new ApiRequest(eApiMessageType.USER_GET_LIST_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_GET_LIST_USER_REQ)
         
         apiRequest.data = {
             limit: _perPage + 1,
             offset: _pageNum
         }
 
-        xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
             if (apiResponse.status !== 200) { 
