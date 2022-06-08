@@ -53,7 +53,7 @@ export const AdminUserForm: FC = (): JSX.Element => {
 
         setInputColor({ backgroundColor: 'lightgray' })
 
-        const apiRequest = new ApiRequest(eApiMessageType.USER_GET_ONE_INFO_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_GET_ONE_INFO_USER_REQ)
         apiRequest.data = {
             userId: id,
         }
@@ -86,7 +86,7 @@ export const AdminUserForm: FC = (): JSX.Element => {
        // event
        const onSubmitForm = (evt: BaseSyntheticEvent): void => {
         evt.preventDefault()
-        const apiRequest = new ApiRequest(eApiMessageType.USER_UPDATE_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_UPDATE_USER_REQ)
         apiRequest.data = {
             userId: id,
             userNickname: userNickname,
