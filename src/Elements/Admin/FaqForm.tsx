@@ -70,11 +70,11 @@ export const AdminFaqForm: FC = (): JSX.Element => {
 
         setInputColor({ backgroundColor: 'lightgray' })
 
-        const apiRequest = new ApiRequest(eApiMessageType.USER_GET_ONE_FAQ_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_GET_ONE_FAQ_REQ)
         apiRequest.data = {
             faqId: id,
         }
-        xmlHttp.request(cfg.apiUrl+'faq/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             // console.log(apiResponse)
             if (apiResponse.status !== eHttpStatus.OK) { return }
@@ -101,7 +101,7 @@ export const AdminFaqForm: FC = (): JSX.Element => {
     const onSubmitForm = (evt: BaseSyntheticEvent): void => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
-        apiRequest.msgType = (paramId === '') ? eApiMessageType.USER_CREATE_FAQ_REQ : eApiMessageType.USER_UPDATE_FAQ_REQ
+        apiRequest.msgType = (paramId === '') ? eApiMessageType.ADMIN_CREATE_FAQ_REQ : eApiMessageType.ADMIN_UPDATE_FAQ_REQ
 
         if (paramId !== '' && _isContentChanged === false) {
             handleEditorChange(content, null)
@@ -120,7 +120,7 @@ export const AdminFaqForm: FC = (): JSX.Element => {
             apiRequest.data.updatedAt = nowStr() 
         }
 
-        xmlHttp.request(cfg.apiUrl+'faq/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
             if (apiResponse.status !== 200) { return }
