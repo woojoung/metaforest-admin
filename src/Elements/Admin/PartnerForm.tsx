@@ -63,11 +63,11 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
 
         setInputColor({ backgroundColor: 'lightgray' })
 
-        const apiRequest = new ApiRequest(eApiMessageType.USER_GET_ONE_PARTNER_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_GET_ONE_PARTNER_REQ)
         apiRequest.data = {
             partnerId: id,
         }
-        xmlHttp.request(cfg.apiUrl+'partner/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             // console.log(apiResponse)
             if (apiResponse.status !== eHttpStatus.OK) { return }
@@ -95,7 +95,7 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
     const onSubmitForm = (evt: BaseSyntheticEvent): void => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
-        apiRequest.msgType = (paramId === '') ? eApiMessageType.USER_CREATE_PARTNER_REQ : eApiMessageType.USER_UPDATE_PARTNER_REQ
+        apiRequest.msgType = (paramId === '') ? eApiMessageType.ADMIN_CREATE_PARTNER_REQ : eApiMessageType.ADMIN_UPDATE_PARTNER_REQ
         apiRequest.data = {
             partnerId: id,
             partnerNickname: partnerNickname,
@@ -106,7 +106,7 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
             isApproved: isApproved,
             updatedAt: nowStr(),
         }
-        xmlHttp.request(cfg.apiUrl+'partner/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
             if (apiResponse.status !== 200) { return }
