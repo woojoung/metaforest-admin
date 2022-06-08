@@ -41,14 +41,14 @@ export const AdminNoticeList: FC = (): JSX.Element => {
     // api
     const apiGetList = (_perPage: number, _pageNum: number): void => {
 
-        const apiRequest = new ApiRequest(eApiMessageType.USER_GET_LIST_NOTICE_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_GET_LIST_NOTICE_REQ)
         
         apiRequest.data = {
             limit: _perPage + 1,
             offset: _pageNum,
 
         }
-        xmlHttp.request(cfg.apiUrl+'notice/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
             if (apiResponse.status !== 200) { 
@@ -78,12 +78,12 @@ export const AdminNoticeList: FC = (): JSX.Element => {
     }
 
     const apiDelete = (id: number): void => {
-        const apiRequest = new ApiRequest(eApiMessageType.USER_DELETE_NOTICE_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_DELETE_NOTICE_REQ)
         apiRequest.data = {
             noticeId: id
         }
 
-        xmlHttp.request(cfg.apiUrl+'notice/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             if (apiResponse.status !== eHttpStatus.OK) { return }
 

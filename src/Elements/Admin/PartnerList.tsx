@@ -74,14 +74,14 @@ export const AdminPartnerList: FC = (): JSX.Element => {
         //     }
         // }
 
-        const apiRequest = new ApiRequest(eApiMessageType.USER_GET_LIST_PARTNER_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_GET_LIST_PARTNER_REQ)
         
         apiRequest.data = {
             limit: _perPage + 1,
             offset: _pageNum,
             // conditions: conditions
         }
-        xmlHttp.request(cfg.apiUrl+'partner/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
             if (apiResponse.status !== 200) { 
@@ -114,12 +114,12 @@ export const AdminPartnerList: FC = (): JSX.Element => {
     }
 
     const apiDelete = (id: number): void => {
-        const apiRequest = new ApiRequest(eApiMessageType.USER_DELETE_PARTNER_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_DELETE_PARTNER_REQ)
         apiRequest.data = {
             partnerId: id
         }
 
-        xmlHttp.request(cfg.apiUrl+'partner/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             if (apiResponse.status !== eHttpStatus.OK) { return }
 
