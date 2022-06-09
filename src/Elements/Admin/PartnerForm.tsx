@@ -16,7 +16,8 @@ import { nowStr, toLocalTimeStr, newTime } from '../../Base/Time'
 import { Partners } from '../../Models/Partners'
 import { ePlanType } from '../../Enums/PlanType'
 import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
+// import 'react-datepicker/dist/react-datepicker.css'
+import 'react-datepicker/dist/react-datepicker-cssmodules.min.css'
 import { ko } from 'date-fns/esm/locale'
 
 export const AdminPartnerForm: FC = (): JSX.Element => {
