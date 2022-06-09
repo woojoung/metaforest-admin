@@ -17,6 +17,7 @@ import AdminPartnerList from './Elements/Admin/PartnerList'
 import AdminUserForm from './Elements/Admin/UserForm'
 import AdminUserList from './Elements/Admin/UserList'
 import './Styles/Style.css'
+import 'react-datepicker/dist/react-datepicker.css'
 //admin component
 
 ReactDOM.render(
