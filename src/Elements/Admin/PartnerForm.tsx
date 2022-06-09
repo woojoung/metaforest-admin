@@ -103,8 +103,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
             partnerNickname: partnerNickname,
             code: code,
             plan: plan,
-            planStartTime: newTime(planStartTime).toPlanStartDateTimeFormat(),
-            planExpiryTime: newTime(planExpiryTime).toPlanExpiryDateTimeFormat(),
+            planStartTime: newTime(planStartTime).toDateTimeFormat(),
+            planExpiryTime: newTime(planExpiryTime).toDateTimeFormat(),
             isApproved: isApproved,
             updatedAt: nowStr(),
         }
@@ -166,10 +166,10 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             {/* <input className={styles.form1Input1} type='text' value={planStartTime} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanStartTime(evt.target.value)} /> */}
                             <DatePicker 
                                 locale={ko}
-                                dateFormat={'yyyy-MM-dd'}
+                                dateFormat={'yyyy-MM-dd 00:00:00'}
                                 selected={planStartTime} 
                                 onChange={(date: Date) => setPlanStartTime(date)}
-                                selectsStart
+                                // selectsStart
                                 startDate={planStartTime}
                                 endDate={planExpiryTime}
                             />
@@ -179,10 +179,10 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             {/* <input className={styles.form1Input1} type='text' value={planExpiryTime} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanExpiryTime(evt.target.value)} /> */}
                             <DatePicker 
                                 locale={ko}
-                                dateFormat={'yyyy-MM-dd'}
+                                dateFormat={'yyyy-MM-dd 23:59:59'}
                                 selected={planExpiryTime} 
                                 onChange={(date: Date) => setPlanExpiryTime(date)}
-                                selectsEnd
+                                // selectsEnd
                                 startDate={planStartTime}
                                 endDate={planExpiryTime}
                                 minDate={planStartTime}
