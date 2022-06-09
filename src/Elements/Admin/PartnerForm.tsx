@@ -106,7 +106,7 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
             partnerNickname: partnerNickname,
             code: code,
             plan: plan,
-            planStartTime: newTime(planStartTime).toPlanStartDateTimeFormat(),
+            planStartTime: planStartTime,
             planExpiryTime: planExpiryTime,
             isApproved: isApproved,
             updatedAt: nowStr(),
