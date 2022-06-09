@@ -166,7 +166,6 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             <DatePicker 
                                 locale={ko}
                                 dateFormat={'yyyy-MM-dd'}
-                                className={'input-datepicker'}
                                 selected={planStartTime} 
                                 onChange={(date: Date) => setPlanStartTime(date)}
                                 selectsStart
@@ -180,7 +179,6 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             <DatePicker 
                                 locale={ko}
                                 dateFormat={'yyyy-MM-dd'}
-                                className={'input-datepicker'}
                                 selected={planExpiryTime} 
                                 onChange={(date: Date) => setPlanExpiryTime(date)}
                                 selectsEnd
