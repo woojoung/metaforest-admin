@@ -34,10 +34,10 @@ export const AdminUserList: FC = (): JSX.Element => {
     const [perPage] = useState(storage.getInteger([path1, path2, 'perPage'].join('_'), 25))
     const [pageNum, setPageNum] = useState(storage.getInteger([path1, path2, 'pageNum'].join('_'), 0))
     const [field1, setField1] = useState(storage.getString([path1, path2, 'field1'].join('_')))
-    const [like1, setLike1] = useState(storage.getString([path1, path2, 'like1'].join('_') )=== '' ? 'true' : 'false')
+    const [like1, setLike1] = useState('true')
     const [keyword1, setKeyword1] = useState(storage.getString([path1, path2, 'keyword1'].join('_')))
     const [orderBy, setOrderBy] = useState(storage.getString([path1, path2, 'orderBy'].join('_')))
-    const [isAsc, setIsAsc] = useState(storage.getString([path1, path2, 'isAsc'].join('_')) === '' ? 'DESC' : 'ASC')
+    const [isAsc, setIsAsc] = useState('DESC')
     const [rows, setRows] = useState([])
     const [nextPage, setNextPage] = useState(false)
 
