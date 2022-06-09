@@ -102,8 +102,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
             partnerNickname: partnerNickname,
             code: code,
             plan: plan,
-            planStartTime: newTime(planStartTime).toLocaleTimeString(),
-            planExpiryTime: newTime(planExpiryTime).toLocaleTimeString(),
+            planStartTime: newTime(planStartTime).toPlanStartDateTimeFormat(),
+            planExpiryTime: newTime(planExpiryTime).toPlanExpiryDateTimeFormat(),
             isApproved: isApproved,
             updatedAt: nowStr(),
         }
@@ -165,7 +165,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             {/* <input className={styles.form1Input1} type='text' value={planStartTime} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanStartTime(evt.target.value)} /> */}
                             <DatePicker 
                                 locale={ko}
-                                dateFormat={'yyyy-MM-dd 00:00:00'}
+                                dateFormat={'yyyy-MM-dd'}
+                                className={'input-datepicker'}
                                 selected={planStartTime} 
                                 onChange={(date: Date) => setPlanStartTime(date)}
                                 selectsStart
@@ -178,7 +179,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                             {/* <input className={styles.form1Input1} type='text' value={planExpiryTime} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setPlanExpiryTime(evt.target.value)} /> */}
                             <DatePicker 
                                 locale={ko}
-                                dateFormat={'yyyy-MM-dd 23:59:59'}
+                                dateFormat={'yyyy-MM-dd'}
+                                className={'input-datepicker'}
                                 selected={planExpiryTime} 
                                 onChange={(date: Date) => setPlanExpiryTime(date)}
                                 selectsEnd
