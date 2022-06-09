@@ -168,8 +168,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                                 selected={planStartTime} 
                                 onChange={(date: Date) => setPlanStartTime(date)}
                                 // selectsStart
-                                startDate={planStartTime}
-                                endDate={planExpiryTime}
+                                // startDate={planStartTime}
+                                // endDate={planExpiryTime}
                             />
                         </p>
                         
@@ -181,8 +181,8 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                                 selected={planExpiryTime} 
                                 onChange={(date: Date) => setPlanExpiryTime(date)}
                                 // selectsEnd
-                                startDate={planStartTime}
-                                endDate={planExpiryTime}
+                                // startDate={planStartTime}
+                                // endDate={planExpiryTime}
                                 minDate={planStartTime}
                             />
                         </p>
