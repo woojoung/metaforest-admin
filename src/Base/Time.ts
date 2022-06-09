@@ -114,7 +114,7 @@ class LocalTime extends Date {
         const year = this.getFullYear()
         const month = padZero(this.getMonth() + 1)
         const dayOfMonth = padZero(this.getDate())
-        const hour = '00'
+        const hour = '15'
         const minute = '00'
         const second = '00'
 
@@ -125,7 +125,7 @@ class LocalTime extends Date {
         const year = this.getFullYear()
         const month = padZero(this.getMonth() + 1)
         const dayOfMonth = padZero(this.getDate())
-        const hour = '23'
+        const hour = '14'
         const minute = '59'
         const second = '59'
 
