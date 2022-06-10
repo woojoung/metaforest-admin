@@ -139,6 +139,8 @@ export const AdminAdminForm: FC = (): JSX.Element => {
             if (paramId === '') { message = '추가하였습니다.' }
             alert(message)
 
+            storage.setInteger('adminAccessLevel', accessLevel)
+
             if (confirm(message)) {
                 navigate(`/${path1}/${path2}/list`)
             }           
