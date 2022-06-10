@@ -17,6 +17,7 @@ import { Faqs } from '../../Models/Faqs'
 import { Editor } from '@tinymce/tinymce-react'
 import { Any } from '../../Base/Type'
 import { eFaqCategory } from '../../Enums/FaqCategory'
+import { eAccessLevel } from '../../Enums/AccessLevel'
 
 export const AdminFaqForm: FC = (): JSX.Element => {
     // param
@@ -102,6 +103,11 @@ export const AdminFaqForm: FC = (): JSX.Element => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.ADMIN_CREATE_FAQ_REQ : eApiMessageType.ADMIN_UPDATE_FAQ_REQ
+
+        if (adminAccessLevel < eAccessLevel.SERVICE_ADMIN) { 
+            alert('작성 권한이 없습니다.')
+            return
+        }
 
         if (paramId !== '' && _isContentChanged === false) {
             handleEditorChange(content, null)

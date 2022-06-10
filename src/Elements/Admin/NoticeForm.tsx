@@ -16,6 +16,7 @@ import { nowStr, toLocalTimeStr } from '../../Base/Time'
 import { Notices } from '../../Models/Notices'
 import { Editor } from '@tinymce/tinymce-react'
 import { Any } from '../../Base/Type'
+import { eAccessLevel } from '../../Enums/AccessLevel'
 
 export const AdminNoticeForm: FC = (): JSX.Element => {
     // param
@@ -98,6 +99,11 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.ADMIN_CREATE_NOTICE_REQ : eApiMessageType.ADMIN_UPDATE_NOTICE_REQ
+
+        if (adminAccessLevel < eAccessLevel.SERVICE_ADMIN) { 
+            alert('작성 권한이 없습니다.')
+            return
+        }
 
         if (paramId !== '' && _isContentChanged === false) {
             handleEditorChange(content, null)
