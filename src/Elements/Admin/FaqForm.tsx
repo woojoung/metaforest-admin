@@ -166,11 +166,11 @@ export const AdminFaqForm: FC = (): JSX.Element => {
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['category'].name}</label>
                             <select value={category} onChange={(evt: BaseSyntheticEvent): void => setCategory(evt.target.value)}>
                                 <option key={eFaqCategory.NONE} value={eFaqCategory.NONE}>{'플랜 해지'}</option>
-                                <option key={eFaqCategory.ONE_TO_ONE} value={eFaqCategory.ONE_TO_ONE}>{'FREE_TRIAL'}</option>
-                                <option key={eFaqCategory.GROUP} value={eFaqCategory.GROUP}>{'BASIC'}</option>
-                                <option key={eFaqCategory.EAP} value={eFaqCategory.EAP}>{'PRO'}</option>
-                                <option key={eFaqCategory.TUTORIAL} value={eFaqCategory.TUTORIAL}>{'튜토리얼'}</option>
-                                <option key={eFaqCategory.COMMUNITY} value={eFaqCategory.COMMUNITY}>{'커뮤니티'}</option>
+                                <option key={eFaqCategory.PROGRAM_USAGE} value={eFaqCategory.PROGRAM_USAGE}>{'프로그램 사용'}</option>
+                                <option key={eFaqCategory.COUNSELING} value={eFaqCategory.COUNSELING}>{'심리 상담'}</option>
+                                <option key={eFaqCategory.PARTNER_REGISTRATION} value={eFaqCategory.PARTNER_REGISTRATION}>{'기관 등록'}</option>
+                                <option key={eFaqCategory.MEMBERSHIP} value={eFaqCategory.MEMBERSHIP}>{'회원관리'}</option>
+                                <option key={eFaqCategory.ETC} value={eFaqCategory.ETC}>{'기타'}</option>
                             </select></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['title'].name}</label>
