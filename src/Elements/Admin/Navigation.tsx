@@ -2,6 +2,7 @@
 import React, { FC, BaseSyntheticEvent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Indexable } from '../../Base/Type'
+import { eAccessLevel } from '../../Enums/AccessLevel'
 import { storage } from '../../Libs/Storage'
 import styles from '../../Styles/Style.module.css'
 
@@ -24,23 +25,26 @@ export const AdminNavigation: FC<Indexable> = (props: Indexable): JSX.Element =>
             <li className={styles.navList}>
                 <div className={styles.dropbtn} onClick={() => navigate('/admin/home')}>홈</div>
             </li>
+            {props.admin.accessLevel >= eAccessLevel.SERVICE_OPERATOR &&
+                <li className={styles.navList + ' ' + styles.dropdown1}>
+                    <div className={styles.dropbtn}>공지사항</div>
+                    <div className={styles.dropdownContent}>
+                        <Link to='/admin/notice/list'>공지사항 목록</Link>
+                        <Link to='/admin/notice/form'>공지사항 추가</Link>
+                    </div>
+                </li>
+            }  
 
-            <li className={styles.navList + ' ' + styles.dropdown1}>
-                <div className={styles.dropbtn}>공지사항</div>
-                <div className={styles.dropdownContent}>
-                    <Link to='/admin/notice/list'>공지사항 목록</Link>
-                    <Link to='/admin/notice/form'>공지사항 추가</Link>
-                </div>
-            </li>
-
-            <li className={styles.navList + ' ' + styles.dropdown1}>
-                <div className={styles.dropbtn}>FAQ</div>
-                <div className={styles.dropdownContent}>
-                    <Link to='/admin/faq/list'>FAQ 목록</Link>
-                    <Link to='/admin/faq/form'>FAQ 추가</Link>
-                </div>
-            </li>
-
+            {props.admin.accessLevel >= eAccessLevel.SERVICE_OPERATOR &&
+                <li className={styles.navList + ' ' + styles.dropdown1}>
+                    <div className={styles.dropbtn}>FAQ</div>
+                    <div className={styles.dropdownContent}>
+                        <Link to='/admin/faq/list'>FAQ 목록</Link>
+                        <Link to='/admin/faq/form'>FAQ 추가</Link>
+                    </div>
+                </li>
+            }
+            {props.admin.accessLevel >= eAccessLevel.SERVICE_ADMIN &&
             <li className={styles.navList + ' ' + styles.dropdown1}>
                 <div className={styles.dropbtn}>기관</div>
                 <div className={styles.dropdownContent}>
@@ -48,24 +52,35 @@ export const AdminNavigation: FC<Indexable> = (props: Indexable): JSX.Element =>
                     <Link to='/admin/partner/form'>기관 추가</Link>
                 </div>
             </li>
+            }
+            
+            {props.admin.accessLevel >= eAccessLevel.SERVICE_ADMIN &&
+                <li className={styles.navList + ' ' + styles.dropdown1}>
+                    <div className={styles.dropbtn}>사용자</div>
+                    <div className={styles.dropdownContent}>
+                        <Link to='/admin/user/list'>사용자 목록</Link>
+                    </div>
+                </li>
+            }
+
+            {props.admin.accessLevel >= eAccessLevel.SYSTEM_OPERATOR &&
+                <li className={styles.navList + ' ' + styles.dropdown1}>
+                    <div className={styles.dropbtn}>관리자</div>
+                    <div className={styles.dropdownContent}>
+                        <Link to='/admin/admin/list'>관리자 목록</Link>
+                        <Link to='/admin/admin/form'>관리자 추가</Link>
+                    </div>
+                </li>
+            }
 
             <li className={styles.navList + ' ' + styles.dropdown1}>
-                <div className={styles.dropbtn}>사용자</div>
+                <div className={styles.dropbtn}>설정</div>
                 <div className={styles.dropdownContent}>
-                    <Link to='/admin/user/list'>사용자 목록</Link>
-                </div>
-            </li>
-
-            <li className={styles.navList + ' ' + styles.dropdown1}>
-                <div className={styles.dropbtn}>관리자</div>
-                <div className={styles.dropdownContent}>
-                    <Link to='#'>{storage.getString('userId')}</Link>
                     <Link to='/admin/passwd'>비밀번호 변경</Link>
                     <Link to='/admin/logout'>로그아웃</Link>
-                    <Link to='/admin/admin/list'>관리자 목록</Link>
-                    <Link to='/admin/admin/form'>관리자 추가</Link>
                 </div>
             </li>
+
             {/* <a className='styles.nav-icon' onClick={onClickIcon}>&#9776;</a> */}
         </ul>
     )
