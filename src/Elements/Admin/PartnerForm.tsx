@@ -171,6 +171,11 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                                 locale={ko}
                                 dateFormat={'yyyy-MM-dd'}
                                 selected={planStartTime} 
+                                peekNextMonth
+                                showMonthDropdown
+                                showYearDropdown
+                                yearDropdownItemNumber={15}
+                                scrollableYearDropdown
                                 onChange={(date: Date) => setPlanStartTime(date)}
                                 // selectsStart
                                 // startDate={planStartTime}
@@ -184,6 +189,11 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
                                 locale={ko}
                                 dateFormat={'yyyy-MM-dd'}
                                 selected={planExpiryTime} 
+                                peekNextMonth
+                                showMonthDropdown
+                                showYearDropdown
+                                yearDropdownItemNumber={15}
+                                scrollableYearDropdown
                                 onChange={(date: Date) => setPlanExpiryTime(date)}
                                 // selectsEnd
                                 // startDate={planStartTime}
