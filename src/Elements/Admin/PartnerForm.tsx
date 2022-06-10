@@ -99,7 +99,7 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
 
         console.log('b4 planStartTime ::: ', planStartTime)
         console.log('b4 planExpiryTime ::: ', planExpiryTime)
-        planStartTime.setHours(0, 0, 0)
+        planStartTime.setHours(0, 0, 0, 0)
         planExpiryTime.setHours(23, 59, 59)
         console.log('after planStartTime ::: ', planStartTime)
         console.log('after planExpiryTime ::: ', planExpiryTime)
