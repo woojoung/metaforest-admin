@@ -108,6 +108,7 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
             ordering: ordering,
             title: title,
             content: _content,
+            adminId: adminId,
             isApproved: isApproved
         }
 

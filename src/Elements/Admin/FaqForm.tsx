@@ -113,6 +113,7 @@ export const AdminFaqForm: FC = (): JSX.Element => {
             category: category,
             title: title,
             content: _content,
+            adminId: adminId,
             isApproved: isApproved
         }
 

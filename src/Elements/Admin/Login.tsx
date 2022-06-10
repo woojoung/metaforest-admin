@@ -35,7 +35,7 @@ export const AdminLogin: FC = (props): JSX.Element => {
             console.log(apiResponse)
             if (apiResponse.status !== eHttpStatus.OK) { alert(apiResponse.status + ' ' + apiResponse.message); return }
 
-            storage.setString('adminId', apiResponse.data.userId)
+            storage.setString('adminId', apiResponse.data.email ?? '')
             storage.setInteger('adminAccessLevel', parseInt(apiResponse.data.accessLevel))
             navigate('/admin/home')
         })
