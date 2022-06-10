@@ -110,17 +110,6 @@ class LocalTime extends Date {
         return [year, month, dayOfMonth].join('-') + ' ' + [hour, minute, second].join(':')
     }
 
-    toPlanStartDateTimeFormat(): string {
-        const year = this.getFullYear()
-        const month = padZero(this.getMonth() + 1)
-        const dayOfMonth = padZero(this.getDate())
-        const hour = '00'
-        const minute = '00'
-        const second = '00'
-
-        return [year, month, dayOfMonth].join('-') + ' ' + [hour, minute, second].join(':')
-    }
-
     toInt(): number {
         const year = this.getFullYear()
         const month = padZero(this.getMonth() + 1)
