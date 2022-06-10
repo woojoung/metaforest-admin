@@ -4,6 +4,7 @@ import { Model } from '../Base/Model'
 export interface Faq {
     faqId?: number
     ordering?: number
+    category?: string
     title?: string
     content: string
     adminId?: string
@@ -17,6 +18,7 @@ export class Faqs extends Model {
         super('Faqs', 'faqId', {
             faqId: { type: 'number', name: 'FAQ No' },
             ordering: { type: 'number', name: '상단고정' },
+            category: { type: 'string', name: 'FAQ 종류' },
             title: { type: 'string', name: '제목' },
             content: { type: 'string', name: '내용' },
             adminId: { type: 'string', name: '관리자ID' },

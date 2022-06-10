@@ -160,18 +160,19 @@ export const AdminFaqForm: FC = (): JSX.Element => {
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['faqId'].name}</label>
                             <input className={styles.form1Input1} type='text' value={id} readOnly={true} style={{ backgroundColor: 'lightgray' }} onChange={(evt: BaseSyntheticEvent): void => setId(evt.target.value)} /></p>
 
-                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['ordering'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={ordering} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setOrdering(evt.target.value)} /></p>
+                        {/* <p className={styles.p1}><label className={styles.Form1Label1}>{column['ordering'].name}</label>
+                            <input className={styles.form1Input1} type='text' value={ordering} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setOrdering(evt.target.value)} /></p> */}
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['category'].name}</label>
                             <select value={category} onChange={(evt: BaseSyntheticEvent): void => setCategory(evt.target.value)}>
-                                <option key={eFaqCategory.NONE} value={eFaqCategory.NONE}>{'플랜 해지'}</option>
+                                <option key={eFaqCategory.NONE} value={eFaqCategory.NONE}>{'선택'}</option>
                                 <option key={eFaqCategory.PROGRAM_USAGE} value={eFaqCategory.PROGRAM_USAGE}>{'프로그램 사용'}</option>
                                 <option key={eFaqCategory.COUNSELING} value={eFaqCategory.COUNSELING}>{'심리 상담'}</option>
                                 <option key={eFaqCategory.PARTNER_REGISTRATION} value={eFaqCategory.PARTNER_REGISTRATION}>{'기관 등록'}</option>
                                 <option key={eFaqCategory.MEMBERSHIP} value={eFaqCategory.MEMBERSHIP}>{'회원관리'}</option>
                                 <option key={eFaqCategory.ETC} value={eFaqCategory.ETC}>{'기타'}</option>
-                            </select></p>
+                            </select>
+                        </p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['title'].name}</label>
                             <input className={styles.form1Input1} type='text' value={title} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setTitle(evt.target.value)} /></p>

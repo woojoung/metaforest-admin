@@ -155,8 +155,8 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['noticeId'].name}</label>
                             <input className={styles.form1Input1} type='text' value={id} readOnly={true} style={{ backgroundColor: 'lightgray' }} onChange={(evt: BaseSyntheticEvent): void => setId(evt.target.value)} /></p>
 
-                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['ordering'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={ordering} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setOrdering(evt.target.value)} /></p>
+                        {/* <p className={styles.p1}><label className={styles.Form1Label1}>{column['ordering'].name}</label>
+                            <input className={styles.form1Input1} type='text' value={ordering} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setOrdering(evt.target.value)} /></p> */}
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['title'].name}</label>
                             <input className={styles.form1Input1} type='text' value={title} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setTitle(evt.target.value)} /></p>
