@@ -202,7 +202,7 @@ export const AdminNoticeList: FC = (): JSX.Element => {
                                 {/* {fieldsKeys.map((key, index): JSX.Element => (
                                     <td key={key}>{fieldValues[index].name}</td>
                                 ))} */}
-                                <th>{columns['partnerId'].name}</th>
+                                <th>{columns['noticeId'].name}</th>
                                 <th>보기/수정</th>
                                 {fieldsKeys.map((key, index): JSX.Element => (
                                     <th key={key}>{fieldValues[index].name}</th>
