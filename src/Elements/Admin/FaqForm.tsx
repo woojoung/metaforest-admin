@@ -104,11 +104,6 @@ export const AdminFaqForm: FC = (): JSX.Element => {
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.ADMIN_CREATE_FAQ_REQ : eApiMessageType.ADMIN_UPDATE_FAQ_REQ
 
-        if (adminAccessLevel < eAccessLevel.SERVICE_OPERATOR) { 
-            alert('작성 권한이 없습니다.')
-            return
-        }
-
         if (paramId !== '' && _isContentChanged === false) {
             handleEditorChange(content, null)
         }

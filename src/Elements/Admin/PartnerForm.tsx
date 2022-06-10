@@ -98,11 +98,6 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.ADMIN_CREATE_PARTNER_REQ : eApiMessageType.ADMIN_UPDATE_PARTNER_REQ
 
-        if (adminAccessLevel < eAccessLevel.SERVICE_ADMIN) { 
-            alert('추가 및 수정 권한이 없습니다.')
-            return
-        }
-
         console.log('b4 planStartTime ::: ', planStartTime)
         console.log('b4 planExpiryTime ::: ', planExpiryTime)
         planStartTime.setHours(0, 0, 0, 0)
