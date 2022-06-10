@@ -97,9 +97,12 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.ADMIN_CREATE_PARTNER_REQ : eApiMessageType.ADMIN_UPDATE_PARTNER_REQ
 
-        console.log('planStartTime ::: ', planStartTime)
-        console.log('planExpiryTime ::: ', planExpiryTime)
-        console.log('newTime(planStartTime).toPlanStartDateTimeFormat() ::: ', newTime(planStartTime).toPlanStartDateTimeFormat())
+        console.log('b4 planStartTime ::: ', planStartTime)
+        console.log('b4 planExpiryTime ::: ', planExpiryTime)
+        planStartTime.setHours(0, 0, 0)
+        planExpiryTime.setHours(23, 59, 59)
+        console.log('after planStartTime ::: ', planStartTime)
+        console.log('after planExpiryTime ::: ', planExpiryTime)
 
         apiRequest.data = {
             partnerId: id,
