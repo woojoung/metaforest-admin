@@ -17,6 +17,7 @@ import { Partners } from '../../Models/Partners'
 import { ePlanType } from '../../Enums/PlanType'
 import DatePicker from 'react-datepicker'
 import { ko } from 'date-fns/esm/locale'
+import { eAccessLevel } from '../../Enums/AccessLevel'
 
 export const AdminPartnerForm: FC = (): JSX.Element => {
     // param
@@ -96,6 +97,11 @@ export const AdminPartnerForm: FC = (): JSX.Element => {
         evt.preventDefault()
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.ADMIN_CREATE_PARTNER_REQ : eApiMessageType.ADMIN_UPDATE_PARTNER_REQ
+
+        if (adminAccessLevel < eAccessLevel.SERVICE_ADMIN) { 
+            alert('추가 및 수정 권한이 없습니다.')
+            return
+        }
 
         console.log('b4 planStartTime ::: ', planStartTime)
         console.log('b4 planExpiryTime ::: ', planExpiryTime)

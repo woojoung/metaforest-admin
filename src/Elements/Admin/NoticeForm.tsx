@@ -100,7 +100,7 @@ export const AdminNoticeForm: FC = (): JSX.Element => {
         const apiRequest = new ApiRequest()
         apiRequest.msgType = (paramId === '') ? eApiMessageType.ADMIN_CREATE_NOTICE_REQ : eApiMessageType.ADMIN_UPDATE_NOTICE_REQ
 
-        if (adminAccessLevel < eAccessLevel.SERVICE_ADMIN) { 
+        if (adminAccessLevel < eAccessLevel.SERVICE_OPERATOR) { 
             alert('작성 권한이 없습니다.')
             return
         }
