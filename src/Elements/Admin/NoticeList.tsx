@@ -204,22 +204,19 @@ export const AdminNoticeList: FC = (): JSX.Element => {
                                 ))} */}
                                 <th>{columns['noticeId'].name}</th>
                                 <th>보기/수정</th>
-                                {fieldsKeys.map((key, index): JSX.Element => (
-                                    <th key={key}>{fieldValues[index].name}</th>
-                                ))}
+                                <th>{columns['title'].name}</th>
+                                <th>{columns['adminId'].name}</th>
+                                <th>{columns['isApproved'].name}</th>
+                                <th>{columns['createdAt'].name}</th>
+                                <th>{columns['updatedAt'].name}</th>
                                 <th>삭제</th>
                             </tr>
                         </thead>
                         <tbody>
                             {rows.map((row: Notice): JSX.Element => (
                                 <tr key={row.noticeId}>
-                                    <td><Link className={'link1'} to={`/${path1}/${path2}/form/${row.noticeId}`}>보기/수정</Link></td>
                                     <td>{row.noticeId}</td>
-                                    <td>
-                                        {row.ordering === -1 && '최상단고정'}
-                                        {row.ordering === -10000 && '상단고정'}
-                                        {row.ordering === 1 && '상단고정 안함'}
-                                    </td>
+                                    <td><Link className={'link1'} to={`/${path1}/${path2}/form/${row.noticeId}`}>보기/수정</Link></td>
                                     <td>{row.title}</td>
                                     <td>{row.adminId}</td>
                                     <td>{row.isApproved === 'Y' ? '승인' : '미승인'}</td>
