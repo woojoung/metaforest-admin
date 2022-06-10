@@ -163,7 +163,7 @@ export const AdminPartnerList: FC = (): JSX.Element => {
                 {paramId === '' &&
                     <form className={styles.form1Search} onSubmit={onSubmitForm}>
                         <select className={styles.select2 + ' ' + styles.margin1} value={field1} onChange={(evt: BaseSyntheticEvent): void => setField1(evt.target.value)}>
-                            <option value=''>검색1</option>
+                            <option value=''>검색</option>
                             {fieldsKeys.map((key, index): JSX.Element => (
                                 <option key={key} value={key}>{fieldValues[index].name}</option>
                             ))}
