@@ -48,14 +48,13 @@ export const AdminPasswd: FC = (props): JSX.Element => {
         }
         const hexMd5 = hex_md5(adminId + hex_md5(newPasswd))
 
-        const apiRequest = new ApiRequest(eApiMessageType.USER_CHANGE_PASSWD_REQ)
+        const apiRequest = new ApiRequest(eApiMessageType.ADMIN_CHANGE_PASSWD_USER_REQ)
         apiRequest.data = {
-            userId: adminId,
-            password: hexMd5,
-            updatedAt: nowStr(),
+            email: adminId,
+            password: hexMd5
         }
 
-        xmlHttp.request(cfg.apiUrl+'user/', apiRequest, (): void => {
+        xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
             console.log(apiResponse)
             if (apiResponse.status !== eHttpStatus.OK) { return }

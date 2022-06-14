@@ -115,7 +115,7 @@ export const AdminAdminForm: FC = (): JSX.Element => {
             email: email,
             password: hexMd5,
             accessLevel: accessLevel,
-            createdAt: nowStr(),
+            // createdAt: nowStr(),
         } : {
             userId: id,
             userNickname: userNickname,
@@ -128,7 +128,7 @@ export const AdminAdminForm: FC = (): JSX.Element => {
             marketingAgreeTime: marketingAgreeTime,
             partnerId: partnerId,
             accessLevel: accessLevel,
-            updatedAt: nowStr(),
+            // updatedAt: nowStr(),
         }
         xmlHttp.request(cfg.apiUrl+'admin/', apiRequest, (): void => {
             const apiResponse = xmlHttp.parseResponse()
@@ -173,7 +173,7 @@ export const AdminAdminForm: FC = (): JSX.Element => {
                             <input className={styles.form1Input1} type='text' value={id} readOnly={true} style={{ backgroundColor: 'lightgray' }} onChange={(evt: BaseSyntheticEvent): void => setId(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{'관리자 이름'}</label>
-                            <input className={styles.form1Input1} type='text' value={userNickname} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setUserNickname(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={userNickname} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setUserNickname(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{'관리자ID'}</label>
                             <input className={styles.form1Input1} type='text' value={email} readOnly={false} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setEmail(evt.target.value)} /></p>
@@ -185,6 +185,8 @@ export const AdminAdminForm: FC = (): JSX.Element => {
                             <select value={accessLevel} onChange={(evt: BaseSyntheticEvent): void => setAccessLevel(evt.target.value)}>
                                 <option key={eAccessLevel.SERVICE_OPERATOR} value={eAccessLevel.SERVICE_OPERATOR}>{text(eAccessLevel[eAccessLevel.SERVICE_OPERATOR])}</option>
                                 <option key={eAccessLevel.SERVICE_ADMIN} value={eAccessLevel.SERVICE_ADMIN}>{text(eAccessLevel[eAccessLevel.SERVICE_ADMIN])}</option>
+                                <option key={eAccessLevel.SYSTEM_OPERATOR} value={eAccessLevel.SYSTEM_OPERATOR}>{text(eAccessLevel[eAccessLevel.SYSTEM_OPERATOR])}</option>
+                                <option key={eAccessLevel.SYSTEM_ADMIN} value={eAccessLevel.SYSTEM_ADMIN}>{text(eAccessLevel[eAccessLevel.SYSTEM_ADMIN])}</option>
                             </select></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['createdAt'].name}</label>

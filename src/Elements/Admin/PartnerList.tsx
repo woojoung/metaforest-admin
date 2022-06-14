@@ -201,6 +201,7 @@ export const AdminPartnerList: FC = (): JSX.Element => {
                                 <th>{columns['partnerId'].name}</th>
                                 <th>보기/수정</th>
                                 <th>{columns['partnerNickname'].name}</th>
+                                <th>{columns['code'].name}</th>
                                 <th>{columns['plan'].name}</th>
                                 <th>{columns['isApproved'].name}</th>
                                 <th>{columns['planStartTime'].name}</th>
@@ -208,7 +209,7 @@ export const AdminPartnerList: FC = (): JSX.Element => {
                                 <th>{columns['createdAt'].name}</th>
                                 <th>{columns['updatedAt'].name}</th>
                                 <th>{'가입계정수'}</th>
-                                <th>삭제</th>
+                                {/* <th>삭제</th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -217,6 +218,7 @@ export const AdminPartnerList: FC = (): JSX.Element => {
                                     <td>{row.partnerId}</td>
                                     <td><Link className={'link1'} to={`/${path1}/${path2}/form/${row.partnerId}`}>보기/수정</Link></td>
                                     <td>{row.partnerNickname}</td>
+                                    <td>{row.code}</td>
                                     <td>{text(ePlanType[row.plan])}</td>
                                     <td>{row.isApproved === 'Y' ? '승인' : '미승인'}</td>
                                     <td>{toLocalTimeStr(row.planStartTime)}</td>
@@ -224,7 +226,7 @@ export const AdminPartnerList: FC = (): JSX.Element => {
                                     <td>{toLocalTimeStr(row.createdAt)}</td>
                                     <td>{toLocalTimeStr(row.updatedAt)}</td>
                                     <td>{row.userCount}</td>
-                                    <td><Delete id={row.partnerId} /></td>
+                                    {/* <td><Delete id={row.partnerId} /></td> */}
                                 </tr>
                             ))}
                         </tbody>

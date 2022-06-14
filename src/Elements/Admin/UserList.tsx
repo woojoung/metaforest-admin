@@ -172,7 +172,7 @@ export const AdminUserList: FC = (): JSX.Element => {
                                 <th>{columns['userId'].name}</th>
                                 <th>보기/수정</th>
                                 <th>{columns['userNickname'].name}</th>
-                                <th>{columns['partnerId'].name}</th>
+                                <th>{columns['accountId'].name}</th>
                                 <th>{'기관 이름'}</th>
                                 <th>{columns['accessLevel'].name}</th>
                                 <th>{columns['createdAt'].name}</th>
@@ -185,8 +185,8 @@ export const AdminUserList: FC = (): JSX.Element => {
                                     <td>{row.userId}</td>
                                     <td><Link className={'link1'} to={`/${path1}/${path2}/form/${row.userId}`}>보기/수정</Link></td>
                                     <td>{row.userNickname}</td>
-                                    <td>{row.partnerId}</td>
-                                    <td>{row.partnerNickname}</td>
+                                    <td>{row.accountId}</td>
+                                    <td>{row.partnerNickname === '' ? '야타브엔터' : row.partnerNickname}</td>
                                     <td>{text(eAccessLevel[row.accessLevel])}</td>
                                     <td>{toLocalTimeStr(row.createdAt)}</td>
                                     <td>{toLocalTimeStr(row.updatedAt)}</td>

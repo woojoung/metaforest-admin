@@ -145,12 +145,12 @@ export const AdminUserForm: FC = (): JSX.Element => {
                             <input className={styles.form1Input1} type='text' value={userNickname} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setUserNickname(evt.target.value)} /></p>
 
                         {/* <p className={styles.p1}><label className={styles.Form1Label1}>{column['profileImageUrl'].name}</label>
-                            <input className={styles.form1Input1} type='text' value={profileImageUrl} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setProfileImageUrl(evt.target.value)} /></p>
+                            <input className={styles.form1Input1} type='text' value={profileImageUrl} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setProfileImageUrl(evt.target.value)} /></p> */}
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['accountId'].name}</label>
                             <input className={styles.form1Input1} type='text' value={accountId} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setAccountId(evt.target.value)} /></p>
 
-                        <p className={styles.p1}><label className={styles.Form1Label1}>{column['gender'].name}</label>
+                        {/* <p className={styles.p1}><label className={styles.Form1Label1}>{column['gender'].name}</label>
                             <input className={styles.form1Input1} type='text' value={gender} readOnly={true} style={inputColor} onChange={(evt: BaseSyntheticEvent): void => setGender(evt.target.value)} /></p>
 
                         <p className={styles.p1}><label className={styles.Form1Label1}>{column['birth'].name}</label>
