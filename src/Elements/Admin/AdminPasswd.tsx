@@ -76,10 +76,10 @@ export const AdminPasswd: FC = (props): JSX.Element => {
                 <div>
                     <form className={styles.form1} onSubmit={onSubmitForm}>
 
-                        <p className={styles.p1}><label className={styles.label1}>새 비밀번호</label>
+                        <p className={styles.p1}><label className={styles.Form1Label1}>새 비밀번호</label>
                             <input className={styles.form1Input1} type='password' onChange={(evt: BaseSyntheticEvent): void => setNewPasswd(evt.target.value)} /></p>
 
-                        <p className={styles.p1}><label className={styles.label1}>새 비밀번호 확인</label>
+                        <p className={styles.p1}><label className={styles.Form1Label1}>새 비밀번호 확인</label>
                             <input className={styles.form1Input1} type='password' onChange={(evt: BaseSyntheticEvent): void => setRetypeNewPasswd(evt.target.value)} /></p>
 
                         <hr />
