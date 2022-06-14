@@ -27,7 +27,8 @@ export const AdminNavigation: FC<Indexable> = (props: Indexable): JSX.Element =>
             </li>
             {props.admin.accessLevel >= eAccessLevel.SERVICE_OPERATOR &&
                 <li className={styles.navList + ' ' + styles.dropdown1}>
-                    <div className={styles.dropbtn}>공지사항</div>
+                    <div className={styles.dropbtn}>{'공지사항 '}
+                    <i className='fa fa-caret-down'></i></div>
                     <div className={styles.dropdownContent}>
                         <Link to='/admin/notice/list'>공지사항 목록</Link>
                         <Link to='/admin/notice/form'>공지사항 추가</Link>
@@ -37,7 +38,8 @@ export const AdminNavigation: FC<Indexable> = (props: Indexable): JSX.Element =>
 
             {props.admin.accessLevel >= eAccessLevel.SERVICE_OPERATOR &&
                 <li className={styles.navList + ' ' + styles.dropdown1}>
-                    <div className={styles.dropbtn}>FAQ</div>
+                    <div className={styles.dropbtn}>{'FAQ '}
+                    <i className='fa fa-caret-down'></i></div>
                     <div className={styles.dropdownContent}>
                         <Link to='/admin/faq/list'>FAQ 목록</Link>
                         <Link to='/admin/faq/form'>FAQ 추가</Link>
@@ -46,7 +48,8 @@ export const AdminNavigation: FC<Indexable> = (props: Indexable): JSX.Element =>
             }
             {props.admin.accessLevel >= eAccessLevel.SERVICE_ADMIN &&
             <li className={styles.navList + ' ' + styles.dropdown1}>
-                <div className={styles.dropbtn}>기관</div>
+                <div className={styles.dropbtn}>{'기관 '}
+                    <i className='fa fa-caret-down'></i></div>
                 <div className={styles.dropdownContent}>
                     <Link to='/admin/partner/list'>기관 목록</Link>
                     <Link to='/admin/partner/form'>기관 추가</Link>
@@ -56,7 +59,8 @@ export const AdminNavigation: FC<Indexable> = (props: Indexable): JSX.Element =>
             
             {props.admin.accessLevel >= eAccessLevel.SERVICE_ADMIN &&
                 <li className={styles.navList + ' ' + styles.dropdown1}>
-                    <div className={styles.dropbtn}>사용자</div>
+                    <div className={styles.dropbtn}>{'사용자 '}
+                    <i className='fa fa-caret-down'></i></div>
                     <div className={styles.dropdownContent}>
                         <Link to='/admin/user/list'>사용자 목록</Link>
                     </div>
@@ -65,7 +69,8 @@ export const AdminNavigation: FC<Indexable> = (props: Indexable): JSX.Element =>
 
             {props.admin.accessLevel >= eAccessLevel.SYSTEM_OPERATOR &&
                 <li className={styles.navList + ' ' + styles.dropdown1}>
-                    <div className={styles.dropbtn}>관리자</div>
+                    <div className={styles.dropbtn}>{'관리자 '}
+                    <i className='fa fa-caret-down'></i></div>
                     <div className={styles.dropdownContent}>
                         <Link to='/admin/admin/list'>관리자 목록</Link>
                         <Link to='/admin/admin/form'>관리자 추가</Link>
@@ -74,7 +79,10 @@ export const AdminNavigation: FC<Indexable> = (props: Indexable): JSX.Element =>
             }
 
             <li className={styles.navList + ' ' + styles.dropdown1}>
-                <div className={styles.dropbtn}>설정</div>
+                <div className={styles.dropbtn}>
+                    <i className='fas fa-user'></i>{' '}
+                    <i className='fa fa-caret-down'></i>
+                </div>
                 <div className={styles.dropdownContent}>
                     <Link to='/admin/passwd'>비밀번호 변경</Link>
                     <Link to='/admin/logout'>로그아웃</Link>
