@@ -186,7 +186,7 @@ export const AdminUserList: FC = (): JSX.Element => {
                                     <td><Link className={'link1'} to={`/${path1}/${path2}/form/${row.userId}`}>보기/수정</Link></td>
                                     <td>{row.userNickname}</td>
                                     <td>{row.accountId}</td>
-                                    <td>{row.partnerNickname === '' ? '야타브엔터' : row.partnerNickname}</td>
+                                    <td>{row.partnerNickname ?? '야타브엔터'}</td>
                                     <td>{text(eAccessLevel[row.accessLevel])}</td>
                                     <td>{toLocalTimeStr(row.createdAt)}</td>
                                     <td>{toLocalTimeStr(row.updatedAt)}</td>
