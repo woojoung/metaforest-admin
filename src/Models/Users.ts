@@ -28,7 +28,7 @@ export class Users extends Model {
             userId: { type: 'number', name: '사용자 No' },
             userNickname: { type: 'string', name: '사용자 이름' },
             profileImageUrl: { type: 'string', name: '사용자 프로필 이미지' },
-            accountId: { type: 'string', name: '사용자 아이디' },
+            accountId: { type: 'string', name: '사용자 ID' },
             password: { type: 'string', name: '비밀번호' },
             email: { type: 'string', name: '이메일' },
             gender: { type: 'string', name: '성별' },
