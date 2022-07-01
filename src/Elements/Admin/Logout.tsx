@@ -15,6 +15,21 @@ export const AdminLogout: FC = (props): JSX.Element => {
 
     // state
 
+    const getCookie = (name: string) => {
+        return document.cookie.split(';').some(c => {
+          return c.trim().startsWith(name + '=');
+        });
+      }
+
+    const deleteCookie = (name: string, path: string, domain: string) => {
+        if (getCookie(name)) {
+          document.cookie = name + "=" +
+            ((path) ? ";path=" + path : "") +
+            ((domain) ? ";domain=" + domain : "") +
+            ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        }
+      }
+
     // effect
     useEffect(() => {
         const apiRequest = new ApiRequest(eApiMessageType.USER_LOGOUT_REQ)
@@ -31,6 +46,7 @@ export const AdminLogout: FC = (props): JSX.Element => {
             */
 
             storage.clear()
+            deleteCookie('meta_sid', window.location.pathname, window.location.hostname)
             navigate('/admin/login')
         })
     }, [])
